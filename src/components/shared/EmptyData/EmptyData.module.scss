@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  padding: 21.5px 16px;
+  color: var(--empty-text);
+  border-left: var(--table);
+  @extend %text-13;
+
+  span {
+    white-space: nowrap;
+  }
+}

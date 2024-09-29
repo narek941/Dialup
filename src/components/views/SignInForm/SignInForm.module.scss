@@ -1,0 +1,34 @@
+.signIn {
+  position: relative;
+
+  &__form {
+    margin-top: 48px;
+
+    &__group {
+      @extend %flex-column;
+      gap: 8px;
+
+      &__error {
+        color: var(--danger);
+        @extend %text-14;
+        letter-spacing: -0.01em;
+      }
+
+      &__button {
+        margin-top: 8px;
+        @extend %flex-end;
+        cursor: pointer;
+      }
+
+      &__checkbox {
+        margin-top: 8px;
+      }
+
+      &__input {
+        &:last-child {
+          margin-top: 2px;
+        }
+      }
+    }
+  }
+}

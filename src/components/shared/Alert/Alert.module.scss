@@ -1,0 +1,60 @@
+.popup {
+  min-width: 280px;
+  border-radius: 4px;
+  padding: 19px 15px;
+  flex-direction: column;
+  color: var(--alert-font);
+  backdrop-filter: blur(4px);
+  background-color: var(--popup-background);
+  border: 1px solid var(--table-border);
+  @extend %text-11-bold;
+
+  &__header {
+    margin: 0 auto;
+    padding: 0 13px;
+    max-width: 274px;
+  }
+
+  &__action {
+    gap: 15px;
+    display: flex;
+    margin-top: 43px;
+    justify-content: end;
+    @extend %text-14-bold;
+
+    &__cancel {
+      cursor: pointer;
+      color: var(--cancel);
+      text-transform: uppercase;
+    }
+
+    &__confirm {
+      cursor: pointer;
+      color: #8d0000;
+      text-transform: uppercase;
+    }
+
+    &__continue {
+      cursor: pointer;
+      color: var(--select-btn);
+      text-transform: uppercase;
+    }
+  }
+}
+
+.wrapper {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  display: none;
+  height: 100vh;
+  z-index: 1000;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.2);
+  cursor: auto;
+  &__open {
+    display: flex !important;
+  }
+}

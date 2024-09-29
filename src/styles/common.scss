@@ -1,0 +1,486 @@
+.wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.MuiTablePagination-toolbar {
+  display: flex;
+  padding: 0 !important;
+  align-items: center !important;
+  min-height: unset !important;
+  margin-top: 17px;
+}
+.MuiTablePagination-spacer,
+.MuiTablePagination-displayedRows {
+  display: none;
+}
+.MuiTablePagination-select {
+  margin: 0;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.MuiTableCell-root {
+  border: none !important;
+}
+.MuiTablePagination-menuItem {
+  color: var(--font) !important;
+}
+.MuiMenu-list {
+  background-color: var(--background) !important;
+}
+.MuiTablePagination-select {
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  line-height: 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  padding-left: 4px !important;
+}
+
+.MuiTablePagination-selectIcon {
+  fill: var(--font) !important;
+  left: 20px;
+}
+.MuiTablePagination-root {
+  overflow: hidden !important;
+}
+
+.MuiSwitch-track {
+  background-color: linear-gradient(0deg, rgba(0, 151, 167, 0.1), rgba(0, 151, 167, 0.1)), #ffffff !important;
+}
+
+.Mui-checked + .MuiSwitch-track {
+  background-color: #0097a7 !important;
+}
+
+.MuiSwitch-switchBase {
+  padding: 9px 0 !important;
+  align-items: baseline !important;
+  &:hover {
+    background-color: transparent !important;
+  }
+}
+
+.MuiSwitch-switchBase:hover {
+  background-color: none !important;
+}
+
+.MuiSwitch-root {
+  height: 14px;
+  width: 51px !important;
+  padding: 12px 0 !important;
+}
+
+.MuiSwitch-thumb {
+  background-color: #c4c4c4;
+}
+
+.MuiSwitch-switchBase.Mui-checked {
+  transform: translateX(30px) !important;
+}
+
+.Mui-checked {
+  color: #c4c4c4 !important;
+
+  &:hover {
+    background-color: transparent !important;
+  }
+}
+.MuiCalendarPicker-root {
+  background: var(--background);
+}
+.MuiPickersDay-root {
+  background-color: var(--background) !important;
+  color: var(--font) !important;
+
+  &:hover {
+    background-color: var(--select-border) !important;
+  }
+}
+
+/// DateRangePicker
+
+.rdrDateDisplayWrapper,
+.rdrMonthAndYearPickers {
+  display: none;
+}
+
+.rdrMonthName {
+  padding: 0 0 12px;
+  @extend %subtitle-14;
+  color: var(--font);
+}
+
+.rdrMonthAndYearWrapper {
+  padding: 16px 0 12px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.rdrMonthsHorizontal {
+  gap: 32px;
+}
+.rdrMonth {
+  margin: 0 auto;
+  width: 100%;
+  padding: 0;
+}
+.rdrDayNumber {
+  span {
+    &::after {
+      content: none !important;
+    }
+  }
+}
+.rdrDayDisabled {
+  background-color: unset;
+
+  .rdrDayNumber {
+    span {
+      color: var(--placeholder) !important;
+    }
+  }
+}
+
+.rdrNextPrevButton {
+  background-color: transparent !important;
+}
+
+.rdrMonthName {
+  text-align: center;
+}
+.rdrMonth {
+  width: 226px;
+}
+
+.rdrDays {
+  width: inherit;
+  row-gap: 2px;
+}
+
+.rdrDay {
+  max-width: 32px !important;
+  max-height: 32px !important;
+}
+.rdrWeekDays {
+  width: 224px;
+  margin-bottom: 2px;
+}
+
+.rdrDayPassive {
+  opacity: 0;
+}
+
+.rdrSelected,
+.rdrInRange,
+.rdrStartEdge,
+.rdrEndEdge {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0 !important;
+}
+.rdrCalendarWrapper {
+  background-color: inherit;
+}
+.rdrDayHovered {
+  border-radius: 50%;
+  background-color: #6200ee;
+  color: var(--font) !important;
+}
+
+.rdrDayNumber {
+  span {
+    color: var(--font) !important;
+    @extend %calendar-14;
+  }
+}
+
+.rdrInRange {
+  color: var(--font);
+}
+
+.rdrEndEdge + .rdrDayNumber,
+.rdrStartEdge + .rdrDayNumber,
+.rdrDayStartPreview {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #6200ee !important;
+  border-radius: 50%;
+}
+.rdrStartEdge,
+.rdrEndEdge {
+  background: var(--calendar);
+}
+.rdrDayInPreview,
+.rdrDayStartPreview,
+.rdrDayEndPreview {
+  border: none;
+}
+.rdrDayStartPreview,
+.rdrDayInPreview,
+.rdrDayEndPreview {
+  background: none !important;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border: none;
+  color: none !important;
+}
+
+.rdrDayToday {
+  color: var(--background);
+  border: 1px solid #6200ee;
+}
+
+.MuiSlider-rail {
+  background: #29292e !important;
+}
+.MuiSlider-track {
+  background: #6200ee !important;
+}
+.MuiSlider-thumb {
+  background-color: #d9d9d9 !important;
+}
+
+///select
+.MuiSelect-select {
+  padding: 0 !important;
+  outline: none !important;
+  width: 100%;
+
+  fieldset: {
+    display: 'none';
+  }
+}
+
+.MuiSelect-outlined {
+  background: transparent;
+  outline: none !important;
+}
+
+.MuiSvgIcon-root {
+  fill: var(--dropdown-svg) !important;
+  margin-right: 4px;
+}
+
+.MuiOutlinedInput-root {
+  background-color: var(--select-background);
+  padding: 6.5px 46px 6.5px 10px !important;
+  gap: 12px !important;
+  border: 1px solid transparent !important;
+
+  &:hover {
+    border: 1px solid var(--select-border) !important;
+    outline: none !important;
+  }
+}
+
+.MuiButtonBase-root {
+  max-height: 25px;
+}
+
+.MuiChip-label {
+  font-size: 12px !important;
+  line-height: 14px !important;
+}
+
+.MuiOutlinedInput-notchedOutline {
+  display: none;
+}
+.MuiOutlinedInput-input {
+  padding: 13px 36px 13px 12px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+}
+
+.MuiMenu-list {
+  padding: 0 !important;
+  box-shadow: var(--option-shadow) !important;
+}
+.MuiMenuItem-root {
+  background: var(--select-option) !important;
+  backdrop-filter: blur(4px) !important;
+  color: var(--font) !important;
+
+  &:hover {
+    background-color: var(--select-hover) !important;
+  }
+}
+
+.Mui-selected {
+  background-color: var(--select-hover) !important;
+}
+
+.MuiTableSortLabel-root:hover {
+  color: inherit !important;
+}
+
+.multipleSelect__control {
+  margin: 0 !important;
+  width: 100% !important;
+  appearance: none !important;
+  border-radius: 4px !important;
+  min-height: 40px !important;
+  position: relative !important;
+  border: 1px solid transparent !important;
+  color: var(--font) !important;
+  background-color: var(--select-background) !important;
+  padding: 0px 12px 0px 10px !important;
+  text-transform: capitalize !important;
+  cursor: pointer !important;
+  min-width: 93px !important;
+  box-shadow: none !important;
+
+  @extend %flex-center;
+
+  &:hover {
+    border: 1px solid var(--select-border) !important;
+    background-color: unset !important;
+  }
+  &--is--focused {
+    border: 1px solid var(--select-border) !important;
+    box-shadow: none !important;
+  }
+
+  &--menu-is-open .multipleSelect__indicators {
+    .multipleSelect__indicators:last-child {
+      svg {
+        transform: rotate(180deg) !important;
+      }
+    }
+  }
+}
+.multipleSelect__input-container {
+  margin: 0 !important;
+  border: none !important;
+  color: var(--placeholder) !important;
+  background-color: transparent !important;
+  @extend %text-14;
+  padding: 0 !important;
+}
+
+.multipleSelect__value-container {
+  padding: 0 !important;
+  flex-wrap: nowrap !important;
+  overflow-x: scroll !important;
+  max-width: max-content;
+  white-space: nowrap;
+
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
+}
+
+.multipleSelect__indicator-separator {
+  display: none !important;
+}
+.multipleSelect__multi-value {
+  display: flex !important;
+  gap: 12px !important;
+  min-width: min-content !important;
+  color: var(--font) !important;
+  border-radius: 12px !important;
+  background: var(--popup-background) !important;
+
+  @extend %flex-align;
+  gap: 4px !important;
+
+  &__remove:hover {
+    background-color: transparent !important;
+  }
+}
+.react-select__option {
+  .option--is-focused,
+  .option--is-selected {
+    padding: 0 !important;
+    background-color: unset !important;
+    border: unset !important;
+  }
+
+  background-color: unset !important;
+  border: unset !important;
+}
+.multipleSelect__multi-value__label {
+  @extend %text-ellipsis;
+  max-width: 80px;
+  width: 100%;
+}
+
+.MuiTableContainer-root {
+  overflow-x: unset !important;
+}
+
+.react-calendar__navigation button {
+  color: var(--font);
+  min-width: 44px;
+  background: none;
+  font-size: 16px;
+  margin-top: 8px;
+}
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  background-color: unset;
+}
+.react-calendar__tile {
+  color: var(--font) !important;
+  width: 32px !important;
+  height: 32px !important;
+  padding: 0 !important;
+
+  &:disabled {
+    color: var(--placeholder) !important;
+    pointer-events: none !important;
+    background-color: var(--background) !important;
+  }
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background-color: #6200ee !important;
+  border-radius: 50%;
+  color: var(--font);
+}
+
+.react-calendar__tile--active {
+  background-color: #6200ee !important;
+  border-radius: 50%;
+  color: var(--font);
+}
+.react-calendar__tile--now {
+  // color: var(--background);
+  background-color: transparent !important;
+
+  border-radius: 0 !important;
+  border: 1px solid #6200ee !important;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: unset !important;
+}
+.react-calendar__month-view__days__day--neighboringMonth {
+  display: none !important;
+}
+
+.react-calendar__navigation__arrow {
+  &:disabled,
+  &:hover {
+    background-color: var(--background) !important;
+  }
+}
+.MuiInputBase {
+  &-adornedEnd {
+    padding: 7px 11px !important;
+  }
+  &-inputAdornedEnd {
+    padding: 0 !important;
+    color: var(--font) !important;
+  }
+}

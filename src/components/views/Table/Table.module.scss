@@ -1,0 +1,159 @@
+.wrapper {
+  width: auto;
+  overflow: hidden;
+  padding: 24px;
+  padding-right: 0;
+}
+
+.inner {
+  padding: var(--table-padding);
+  border-radius: 8px;
+  background-color: var(--table-inner);
+}
+
+.table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  min-width: 750px;
+  width: -webkit-fill-available;
+
+  &__wrapper {
+    border: 1px solid var(--table-border);
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+
+  &__header {
+    height: 48px;
+    background: var(--table-header);
+    display: table-header-group;
+    border-bottom: 1px solid var(--table-border);
+
+    &__ceil {
+      height: 48px;
+      text-align: left;
+      white-space: nowrap;
+      font-size: 13px !important;
+      line-height: 16px !important;
+      color: var(--table-header-font) !important;
+      position: relative;
+      border-color: var(--table-border) !important;
+      padding: 9px !important;
+
+      span {
+        height: 16px;
+      }
+
+      &__sort {
+        display: flex;
+        position: relative;
+        align-items: center;
+        min-width: max-content;
+        background-color: transparent;
+        color: var(--table-header-font) !important;
+        padding: 0;
+
+        &__up {
+          position: absolute;
+          right: -16px;
+          background-color: transparent;
+
+          svg path {
+            fill: var(--table-svg);
+          }
+
+          &_icon {
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+  }
+  &__body {
+    display: table-row-group;
+
+    &__row {
+      background: var(--ceil);
+
+      &:not(:last-of-type) {
+        border-bottom: 1px solid var(--table-border);
+      }
+
+      &:nth-child(even) {
+        background: var(--ceil-even);
+      }
+
+      &:last-child {
+        border: none;
+      }
+
+      &__ceil {
+        height: 56px;
+        color: var(--font);
+        padding: 9px !important;
+        font-size: 13px !important;
+        line-height: 16px !important;
+        border-color: var(--table-border) !important;
+
+        &__actions {
+          gap: 16px !important;
+          cursor: pointer;
+          color: var(--font);
+          display: flex !important;
+          align-items: center !important;
+
+          &__chart,
+          &__setting {
+            path {
+              fill: var(--icon-secondary-selected);
+            }
+          }
+          &__chart,
+          &__bin,
+          &__block,
+          &__setting {
+            position: relative;
+            &:hover {
+              span {
+                display: flex;
+                z-index: 10;
+                background-color: #474646;
+                color: #fff;
+                padding: 5px 8px;
+                border-radius: 4px;
+                @extend %text-12;
+              }
+            }
+
+            span {
+              position: absolute;
+              bottom: -30px;
+              left: -24px;
+              display: none;
+              padding: 5px 8px;
+              color: var(--font);
+              border-radius: 4px;
+              width: max-content;
+              background-color: var(--after-background);
+              @extend %text-12;
+            }
+
+            &__span_last {
+              bottom: 30px !important;
+              left: -65px !important;
+            }
+
+            &__users_last {
+              bottom: 30px !important;
+            }
+          }
+          &__bin {
+            &__disabled {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

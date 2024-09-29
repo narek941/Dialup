@@ -1,0 +1,28 @@
+.wrapper {
+  background: var(--sidebar-background);
+  @extend %sidebar-shadow;
+  border-radius: 8px;
+  padding: 30px;
+}
+.title {
+  @extend %title-18;
+  color: var(--font);
+}
+.subTitle {
+  @extend %subtitle-14;
+  color: var(--font);
+}
+.chart {
+  margin: 10px 0 50px;
+}
+
+.tooltip {
+  box-sizing: border-box;
+  text-align: left;
+  z-index: 1000;
+  pointer-events: none;
+  max-width: 200px;
+  width: 100%;
+  position: absolute;
+  display: none;
+}

@@ -1,0 +1,69 @@
+.wrapper {
+  width: 100%;
+}
+
+.signIn {
+  gap: 10px;
+  position: relative;
+  min-height: 100vh;
+  @extend %flex-between;
+
+  &__inner {
+    flex: 1;
+    height: 100vh;
+    @extend %flex-column-between;
+
+    &__first {
+      padding: 40px 0 40px 40px;
+      background-color: var(--background);
+    }
+
+    &__second {
+      height: 100%;
+      background-color: #faffff;
+      @extend %flex-center;
+    }
+  }
+
+  &__item {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+
+    &__title {
+      color: var(--font);
+      @extend %title-45;
+    }
+
+    &__subTitle {
+      margin-top: 8px;
+      @extend %text-14;
+      color: var(--signIn-subtitle);
+    }
+
+    &__form {
+      margin-top: 48px;
+
+      &__group {
+        @extend %flex-column;
+        gap: 16px;
+
+        &__button {
+          @extend %flex-end;
+        }
+      }
+    }
+  }
+}
+
+.copyright {
+  text-align: center;
+}
+
+.header {
+  cursor: pointer;
+
+  svg path {
+    fill: var(--icon-primary);
+  }
+}

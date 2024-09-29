@@ -1,0 +1,64 @@
+.analytics {
+  margin-top: 10px;
+  @extend %flex-column;
+  gap: 24px;
+  padding-left: 24px;
+  max-width: 100%;
+
+  &__inner {
+    overflow-x: scroll;
+    @extend %flex-column;
+    gap: 24px;
+    width: 100%;
+    overflow: overlay;
+  }
+
+  &__bricks__wrapper {
+    display: grid;
+    grid-gap: 24px;
+
+    div:nth-child(3) {
+      grid-column: 3;
+      grid-row: 1 / span 2;
+    }
+  }
+
+  &__chart {
+    display: flex;
+    gap: 24px;
+    // grid-auto-columns: 50%;
+    // grid-auto-flow: column;
+
+    &__inner {
+      flex: 1;
+    }
+
+    &__item {
+      min-width: 647px !important;
+      // position: relative;
+      // height: 100%;
+    }
+  }
+}
+.table {
+  padding: 24px;
+  box-shadow: var(--collapse-table-shadow) !important;
+  border-radius: 8px;
+  background-color: var(--paper) !important;
+}
+
+.tabs {
+  gap: 32px;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--cancel);
+  justify-content: start;
+  padding: 16px 0 0;
+  @extend %flex-align;
+  @extend %text-16-bold;
+  margin: 10px 0;
+}
+
+.chart__wrapper {
+  position: relative;
+}

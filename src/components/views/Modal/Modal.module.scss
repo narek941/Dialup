@@ -1,0 +1,139 @@
+.wrapper {
+  top: 0;
+  right: 0;
+  width: 100%;
+  color: var(--font);
+  z-index: 4;
+  display: block;
+  position: fixed;
+  max-width: 288px;
+  border-radius: 4px;
+  visibility: hidden;
+  border: 1px solid var(--header-border);
+  background-color: var(--sidebar-background);
+  @extend %flex-column;
+  @extend %modal-shadow;
+
+  &__open {
+    visibility: visible;
+  }
+}
+
+.info {
+  color: var(--modal-info);
+  @extend %text-10;
+  @extend %flex-column;
+}
+
+.inner {
+  @extend %modal-shadow;
+  max-height: 90vh;
+
+  overflow-y: scroll;
+}
+
+.item {
+  padding: 13px 16px;
+  @extend %text-11;
+  @extend %flex-between;
+  border-bottom: 1px solid var(--header-border);
+
+  &__header {
+    opacity: 1;
+    width: 100%;
+
+    &__text {
+      &__title {
+        @extend %header-14;
+      }
+
+      &__subtitle {
+        gap: 8px;
+        color: var(--placeholder-select);
+        @extend %flex-center;
+        @extend %text-10;
+
+        &__platform {
+          gap: 3px;
+          @extend %flex-align;
+
+          &__icon {
+            width: 14px;
+            height: 14px;
+            path {
+              fill: var(--svg);
+            }
+          }
+        }
+      }
+    }
+
+    &__icon {
+      cursor: pointer;
+      padding: 5px;
+      @extend %flex-align;
+    }
+  }
+  &__value {
+    text-align: left;
+  }
+}
+.chart {
+  border-bottom: 1px solid var(--header-border);
+
+  h1 {
+    padding: 16px;
+  }
+
+  &__inner {
+    &__doughnut {
+      padding-bottom: 8px;
+      max-width: 100%;
+      min-height: 271px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__label {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 10.5px;
+
+      &__item {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        gap: 8px;
+
+        p {
+          position: relative;
+          @extend %text-10;
+        }
+        span {
+          width: 10px;
+          height: 10px;
+          display: block;
+          background-color: red;
+          border-radius: 50%;
+        }
+
+        &:nth-child(odd) {
+          justify-content: end;
+        }
+      }
+    }
+  }
+}
+
+.link {
+  cursor: pointer;
+  text-transform: capitalize;
+  color: var(--button-background-secondary);
+  @extend %button-14;
+  @extend %flex-end;
+}
+
+.doughnut {
+  padding: 5px;
+}

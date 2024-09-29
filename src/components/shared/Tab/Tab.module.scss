@@ -1,0 +1,44 @@
+.tab {
+  padding-bottom: 24px;
+  cursor: pointer;
+  @extend %flex-align;
+  color: var(--tab-not-selected);
+
+  svg path {
+    fill: var(--tab-not-selected);
+  }
+
+  &__border {
+    padding-bottom: 0;
+  }
+
+  &__selected {
+    position: relative;
+    color: var(--tab-selected);
+
+    svg path {
+      fill: var(--tab-selected);
+    }
+
+    &:first-child {
+      &::after {
+        width: calc(100% - 6px);
+      }
+    }
+
+    &__border::after {
+      display: none;
+    }
+
+    &::after {
+      content: '';
+      width: 100%;
+      height: 2px;
+      border-radius: 4px 4px 0 0;
+      background: var(--tab-selected-border);
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,72 @@
+.header {
+  top: 0;
+  z-index: 3;
+  position: sticky;
+  padding-left: 72px;
+  border-bottom: 1px solid var(--header-border);
+
+  &__wrapper {
+    width: 100%;
+    padding: 22px 28px;
+    background-color: var(--header-background);
+    @extend %flex-between;
+  }
+
+  &__item {
+    position: relative;
+
+    &__first {
+      gap: 16px;
+      cursor: pointer;
+      @extend %flex-align;
+    }
+    &__second {
+      position: relative;
+      cursor: pointer;
+    }
+
+    &__text {
+      color: var(--font);
+      @extend %header-text;
+
+      &__footer {
+        position: absolute;
+        left: 0;
+        bottom: -11px;
+        @extend %flex-align;
+        gap: 4px;
+        @extend %header-11;
+        color: var(--placeholder-select);
+        width: 100%;
+        white-space: nowrap;
+
+        &__platform {
+          gap: 3px;
+          width: 100%;
+          @extend %flex-align;
+
+          &__icon {
+            width: 14px;
+            height: 14px;
+            path {
+              fill: var(--svg);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__line {
+    margin: 0;
+    height: 1px;
+    color: var(--header-border);
+  }
+
+  svg {
+    display: flex;
+    path {
+      fill: var(--icon-primary);
+    }
+  }
+}

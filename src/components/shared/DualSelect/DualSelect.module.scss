@@ -1,0 +1,135 @@
+.inner {
+  gap: 4px;
+  flex: 1;
+  width: 100%;
+  @extend %flex-align;
+
+  span {
+    color: var(--font);
+    @extend %text-14;
+  }
+}
+
+.header {
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+  border-radius: 4px;
+  color: var(--font);
+  padding: 9.5px 11px;
+  border: 1px solid transparent;
+  background: var(--input-background);
+
+  &__inner {
+    gap: 12px;
+    align-items: center;
+    @extend %flex-between;
+
+    .header__input {
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      color: var(--font);
+      background-color: transparent;
+      @extend %filter-14;
+
+      &__placeholder {
+        color: var(--placeholder);
+      }
+    }
+
+    svg {
+      @extend %flex-center;
+      path {
+        fill: var(--svg);
+      }
+    }
+  }
+
+  &:hover {
+    border: 1px solid var(--select-border);
+  }
+
+  &__open {
+    border: 1px solid var(--select-border);
+  }
+}
+
+.slider {
+  padding: 12px;
+}
+
+.action {
+  gap: 10px;
+  cursor: pointer;
+  justify-content: start;
+  text-transform: capitalize;
+  @extend %text-13;
+  @extend %flex-align;
+
+  &__select {
+    color: var(--select-btn);
+  }
+
+  &__cancel {
+    color: var(--cancel);
+  }
+}
+
+.modal {
+  gap: 11px;
+  left: 0;
+  top: 47px;
+  z-index: 10;
+  opacity: 0;
+  display: flex;
+  min-width: 260px;
+  width: fit-content;
+  border-radius: 4px;
+  padding: 13px 12px;
+  position: absolute;
+  pointer-events: none;
+  flex-direction: column;
+  background-color: var(--background);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+  &__open {
+    opacity: 1;
+    pointer-events: visible;
+  }
+}
+
+.input {
+  padding: 11px;
+  border-radius: 4px;
+  border: 1px solid #29292e;
+  @extend %text-14;
+}
+
+.select {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 100%;
+  color: var(--font);
+  border-radius: 4px;
+  position: relative;
+  text-transform: capitalize;
+  padding: 12px 46px 12px 10px;
+  border: 1px solid transparent;
+  background-color: transparent;
+
+  &:hover {
+    border: 1px solid var(--select-border);
+  }
+
+  &__item {
+    min-width: 89px;
+    color: var(--font);
+
+    &:hover {
+      background-color: var(--select-hover);
+    }
+  }
+}
