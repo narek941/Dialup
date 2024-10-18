@@ -8,10 +8,10 @@ import { Routes } from 'types';
 import { Alert } from 'components';
 import { BinIcon, ChartIcon, SettingIcon } from 'assets/icons';
 
-import BlockAction from '../../BlockAction';
 import styles from '../../Table.module.scss';
 
 import { ITableAccountBodyProps } from './types';
+import Permission from '../../PermissionAction';
 
 const TableAccountBody = ({
   rows,
@@ -185,7 +185,7 @@ const TableAccountBody = ({
                 <span className={tooltipClasses}>Account settings</span>
               </div>
             )}
-            <BlockAction
+            <Permission
               id={id}
               status={status}
               action='account'

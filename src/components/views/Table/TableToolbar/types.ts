@@ -1,10 +1,10 @@
 import { Routes } from 'types';
 
 export interface ITableToolbarProps {
-  linkText?: 'user' | 'account';
+  linkText?: 'user' | 'account' | 'customers';
   linkTo?: Routes;
   onClick?: any;
-  action: ActionType.ACCOUNTS | ActionType.ALERTS | ActionType.USERS;
+  action: ActionType.ACCOUNTS | ActionType.ALERTS | ActionType.USERS | ActionType.CUSTOMERS;
 }
 
 export enum AccountTabType {
@@ -27,7 +27,7 @@ export enum ActionType {
   USERS = 'users',
   ACCOUNTS = 'accounts',
   ALERTS = 'alerts',
-  CUSTOMERS = 'CUSTOMERS',
+  CUSTOMERS = 'customers',
 }
 
 export enum OrderType {

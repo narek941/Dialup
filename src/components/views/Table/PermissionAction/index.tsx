@@ -5,16 +5,16 @@ import { Alert } from 'components';
 
 import styles from '../Table.module.scss';
 
-import { IBlockAction } from './types';
+import { IPermission } from './types';
 
-const BlockAction = ({
+const Permission = ({
   status,
   id,
   handleUnblock,
   handleBlock,
   action,
   tooltipClasses,
-}: IBlockAction) => {
+}: IPermission) => {
   const [openAlert, setOpenAlert] = useState(false);
 
   const handleCloseAlert = (e: SyntheticEvent) => {
@@ -46,4 +46,4 @@ const BlockAction = ({
   );
 };
 
-export default BlockAction;
+export default Permission;

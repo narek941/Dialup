@@ -46,6 +46,32 @@ export const AccountTypeOptions = [
   },
 ];
 
+export const TwilioOptions = [
+  {
+    label: 'Route 1',
+    value: 'Route 1',
+  },
+  {
+    label: 'Route 2',
+    value: 'Route 2',
+  },
+  {
+    label: 'Route 3',
+    value: 'Route 3',
+  },
+];
+
+export const RoutingTypeOptions = [
+  {
+    label: 'By Route',
+    value: 'byRoute',
+  },
+  {
+    label: 'By Rate',
+    value: 'byrate',
+  },
+];
+
 export const AlertsTypeOptions = [
   {
     label: 'Trade Fulfilled',

@@ -8,7 +8,6 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { AddAccountIcon, FilterIcon } from 'assets/icons';
 import { AccessWrapper, Alert, LinkButton, Tab } from 'components';
 import AccountsFilters from 'components/views/filters/AccountsFilters';
-import UsersFilters from 'components/views/filters/UsersFilters';
 import AlertsFilters from 'components/views/filters/AlertsFilters';
 import { accountsActions } from 'store/accountsSlice';
 import { useAppDispatch } from 'hooks';
@@ -16,19 +15,23 @@ import { adminActions } from 'store/adminSlice';
 
 import styles from './TableToolbar.module.scss';
 import { AccountTabType, ActionType, ITableToolbarProps } from './types';
+import CustomersFilters from 'components/views/filters/CustomersFilters';
 
 const TableToolbar = ({ linkText, linkTo, action }: ITableToolbarProps): JSX.Element => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+
   const [filterVisible, setFilterVisible] = useState(false);
   const text = `+ ADD NEW ${linkText}`;
-  const dispatch = useAppDispatch();
   const toolbarClasses = classNames(styles.toolbar, {
     [styles.toolbar_noLink]: !linkTo,
   });
+
   const wrapperClasses = classNames(styles.wrapper, {
     [styles.wrapper__account]: action === ActionType.ACCOUNTS,
   });
+
   const handleFilter = () => setFilterVisible(!filterVisible);
   const [searchParams, setSearchParams] = useSearchParams();
   const [isSyncing, setIsSyncing] = useState<boolean>(false);
@@ -59,8 +62,8 @@ const TableToolbar = ({ linkText, linkTo, action }: ITableToolbarProps): JSX.Ele
   const renderFilter = () => {
     if (action === ActionType.ACCOUNTS) {
       return <AccountsFilters />;
-    } else if (action === ActionType.USERS) {
-      return <UsersFilters />;
+    } else if (action === ActionType.CUSTOMERS) {
+      return <CustomersFilters />;
     } else {
       return <AlertsFilters />;
     }
@@ -84,7 +87,7 @@ const TableToolbar = ({ linkText, linkTo, action }: ITableToolbarProps): JSX.Ele
           </div>
         </div>
       );
-    } else if (action === ActionType.USERS || action === ActionType.ALERTS) {
+    } else {
       return (
         <>
           {action && linkTo && (

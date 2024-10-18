@@ -1,11 +1,10 @@
 import { SubmitHandler } from 'react-hook-form';
 
 export type FilterFormShape = {
-  userName: string;
-  userStatus: string;
-  userId: string;
-  userType: string;
-  userEmail: string;
+  name: string;
+  lastname: string;
+  email: string;
+  id: string;
 };
 
 export interface IFilterForm {

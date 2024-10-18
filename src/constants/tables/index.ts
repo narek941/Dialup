@@ -1,4 +1,4 @@
-export { default as usersTable } from './users';
+export { default as customersTable } from './customers';
 export { default as walletTable } from './wallet';
 export { default as alertsTable } from './alerts';
 export { default as tradesTable } from './trades';
