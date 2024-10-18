@@ -11,11 +11,11 @@ import { useAppSelector } from 'hooks';
 import { authSelectors } from 'store/authSlice';
 
 import styles from '../../Table.module.scss';
-import BlockAction from '../../BlockAction';
 
 import { ITableBodyProps } from './types';
+import Permission from '../../PermissionAction';
 
-const TableUsersBody = ({
+const TableCustomersBody = ({
   rows,
   open,
   handleClose,
@@ -28,59 +28,88 @@ const TableUsersBody = ({
 
   const personalInfo = useAppSelector(authSelectors.selectPersonalInfo);
 
-  const actionCellClassnames = classNames(
-    styles.table__body__row__ceil,
-    styles.table__body__row__ceil__actions,
-  );
-
-  const renderRows = rows.map(({ id, email, role, status, username }: any, index) => {
-    const dataCells = [id, username, email, role, status];
+  const renderRows = rows.map(({ id, email, lastname, name }: any, index) => {
+    const dataCells = [id, name, lastname, email];
     const isLastItem = index === rows.length - 1;
-    const tooltipClasses = classNames({
-      [styles.table__body__row__ceil__actions__bin__users_last]: isLastItem,
-    });
-    const binClass = classNames(styles.table__body__row__ceil__actions__bin, {
-      [styles.table__body__row__ceil__actions__bin__disabled]: personalInfo?.id == id,
-    });
 
     return (
       <TableRow className={styles.table__body__row} tabIndex={id} key={index}>
-        {dataCells.map((item) => (
+        {dataCells.map((item, index) => (
           <TableCell key={item} align='left' className={styles.table__body__row__ceil}>
-            {item}
+            {!index ? (
+              <Link
+                to={`${Routes.Customers}/${id}`}
+                className={styles.table__body__row__ceil__actions__setting}
+              >
+                {item}
+              </Link>
+            ) : (
+              item
+            )}
           </TableCell>
         ))}
 
-        <TableCell className={actionCellClassnames} align='left'>
-          <BlockAction
-            id={id}
-            action='user'
-            status={status}
-            handleBlock={handleBlock}
-            handleUnblock={handleUnblock}
-            tooltipClasses={tooltipClasses}
-          />
-
+        <TableCell
+          className={classNames(
+            styles.table__body__row__ceil,
+            styles.table__body__row__ceil__actions,
+          )}
+          align='left'
+        >
           <Link
             to={`${Routes.EditUser}/${id}`}
             className={styles.table__body__row__ceil__actions__setting}
           >
             <EditIcon />
-            <span className={tooltipClasses}>Edit user</span>
+            <span
+              className={classNames({
+                [styles.table__body__row__ceil__actions__bin__users_last]: isLastItem,
+              })}
+            >
+              Edit Customers
+            </span>
           </Link>
 
           {status !== 'DELETED' && handleClose && (
             <div
-              className={binClass}
+              className={classNames(styles.table__body__row__ceil__actions__bin, {
+                [styles.table__body__row__ceil__actions__bin__disabled]: personalInfo?.id == id,
+              })}
               onClick={() => {
                 setID(id);
                 toggleAlertOpen && toggleAlertOpen();
               }}
             >
               <BinIcon />
-              <span className={tooltipClasses}>Delete user</span>
+              <span
+                className={classNames({
+                  [styles.table__body__row__ceil__actions__bin__users_last]: isLastItem,
+                })}
+              >
+                Delete Customers
+              </span>
             </div>
           )}
+          <Permission
+            id={id}
+            action='customers'
+            status={'DELETED'}
+            handleBlock={handleBlock}
+            handleUnblock={handleUnblock}
+            tooltipClasses={classNames({
+              [styles.table__body__row__ceil__actions__bin__users_last]: isLastItem,
+            })}
+          />
+          <Permission
+            id={id}
+            action='customers'
+            status={'BLOCKED'}
+            handleBlock={handleBlock}
+            handleUnblock={handleUnblock}
+            tooltipClasses={classNames({
+              [styles.table__body__row__ceil__actions__bin__users_last]: isLastItem,
+            })}
+          />
         </TableCell>
       </TableRow>
     );
@@ -100,4 +129,4 @@ const TableUsersBody = ({
   );
 };
 
-export default TableUsersBody;
+export default TableCustomersBody;

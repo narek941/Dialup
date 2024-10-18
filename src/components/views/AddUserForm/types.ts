@@ -1,15 +1,16 @@
 import { SubmitHandler } from 'react-hook-form';
 
-export type AddUserFormShape = {
+export type AddNewCustomersFormShape = {
   name: string;
+  lastname: string;
   email: string;
   password?: string;
-  usersAccountType: string;
   confirmPassword?: string;
-  usersAccountList: any;
+  twilioRoute: string;
+  routType: string;
 };
 
 export interface IAddUser {
-  onClick: SubmitHandler<AddUserFormShape>;
+  onClick: SubmitHandler<AddNewCustomersFormShape>;
   isEditable?: boolean;
 }

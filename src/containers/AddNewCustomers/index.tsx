@@ -14,9 +14,9 @@ import { accountsActions } from 'store/accountsSlice';
 import { RoleType } from 'types/api';
 import { authSelectors } from 'store/authSlice';
 
-import styles from './AddNewUser.module.scss';
+import styles from './AddNewCustomers.module.scss';
 
-const AddNewUser = () => {
+const AddNewCustomers = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch() as AppDispatch;
   const { id: userId } = useParams();
@@ -26,7 +26,7 @@ const AddNewUser = () => {
   const { username, role, email, password, allowedAccountIds } = useSelector(
     adminSelectors.selectUserById,
   );
-  const handleSubmit: SubmitHandler<AddUserFormShape> = async (values) => {
+  const handleSubmit: SubmitHandler<AddNewCustomersFormShape> = async (values) => {
     const body = {
       email: values.email.trim(),
       password: values.password,
@@ -104,4 +104,4 @@ const AddNewUser = () => {
   );
 };
 
-export default AddNewUser;
+export default AddNewCustomers;

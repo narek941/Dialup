@@ -10,14 +10,12 @@ import { Button, Input, Select } from 'components';
 import FormGroup from 'components/forms/FormGroup';
 import FormWrapper from 'components/forms/FormWrapper';
 import { AccountTypeOptions } from 'utils/filterHelper';
-import MultipleSelect from 'components/shared/MultipleSelect';
 import { usersActions, usersSelectors } from 'store/usersSlice';
 import { accountsActions, accountsSelectors } from 'store/accountsSlice';
-import { RoleType } from 'types/api';
 
 import styles from './AddUserForm.module.scss';
-import { AddUserFormShape, IAddUser } from './types';
-import { addUserFormFields, addSchemaKeys } from './fields';
+import { AddNewCustomersFormShape, IAddUser } from './types';
+import { addCustomersFormFields, addSchemaKeys } from './fields';
 
 const AddUserForm = ({ onClick, isEditable = false }: IAddUser) => {
   const { t } = useTranslation();
@@ -39,7 +37,7 @@ const AddUserForm = ({ onClick, isEditable = false }: IAddUser) => {
 
   const { username, email, role, allowedAccounts } = useSelector(adminSelectors.selectUserById);
 
-  const addUserFormDefaultValues = useMemo(
+  const addCustomersFormDefaultValues = useMemo(
     () =>
       isEditable
         ? {
@@ -55,28 +53,31 @@ const AddUserForm = ({ onClick, isEditable = false }: IAddUser) => {
     [allowedAccounts, email, isEditable, role, username],
   );
 
-  const { formMethods, handleSubmit } = useForm<keyof AddUserFormShape, AddUserFormShape>({
+  const { formMethods, handleSubmit } = useForm<
+    keyof AddNewCustomersFormShape,
+    AddNewCustomersFormShape
+  >({
     schemaKeys: addSchemaKeys,
-    defaultValues: addUserFormDefaultValues,
+    defaultValues: addCustomersFormDefaultValues,
   });
 
-  const accountsOptions = useMemo(
-    () =>
-      accountList?.map((account: any) => ({
-        label: account.name,
-        value: account.id,
-      })),
-    [accountList],
-  );
+  // const accountsOptions = useMemo(
+  //   () =>
+  //     accountList?.map((account: any) => ({
+  //       label: account.name,
+  //       value: account.id,
+  //     })),
+  //   [accountList],
+  // );
 
   useEffect(() => {
     if (isEditable) {
-      formMethods.reset(addUserFormDefaultValues);
+      formMethods.reset(addCustomersFormDefaultValues);
     }
-  }, [addUserFormDefaultValues, formMethods, isEditable]);
+  }, [addCustomersFormDefaultValues, formMethods, isEditable]);
 
-  const accountWatch = formMethods.watch();
-  const defaultMultipleValue = accountWatch.usersAccountType == RoleType.VIEWER && [];
+  // const accountWatch = formMethods.watch();
+  // const defaultMultipleValue = accountWatch.routType == RoleType.VIEWER && [];
 
   return (
     <>
@@ -93,53 +94,65 @@ const AddUserForm = ({ onClick, isEditable = false }: IAddUser) => {
                 userErrors?.name ||
                 userAdminErrors?.name
               }
-              {...addUserFormFields.name}
+              {...addCustomersFormFields.name}
               {...formMethods.register('name')}
             />
-
+            <Input
+              error={
+                formMethods.formState.errors.lastname?.message ||
+                userErrors?.lastname ||
+                userAdminErrors?.lastname
+              }
+              {...addCustomersFormFields.lastname}
+              {...formMethods.register('lastname')}
+            />
             <Input
               error={
                 formMethods.formState.errors.email?.message ||
                 userErrors?.email ||
                 userAdminErrors?.email
               }
-              {...addUserFormFields.email}
+              {...addCustomersFormFields.email}
               {...formMethods.register('email')}
             />
             <Input
               error={formMethods.formState.errors.password?.message}
-              {...addUserFormFields.password}
+              {...addCustomersFormFields.password}
               {...formMethods.register('password')}
               haveRightIcon={true}
             />
             <Input
               error={formMethods.formState.errors.confirmPassword?.message}
-              {...addUserFormFields.confirmPassword}
+              {...addCustomersFormFields.confirmPassword}
               {...formMethods.register('confirmPassword')}
               haveRightIcon={true}
             />
             <Controller
               control={formMethods.control}
-              name={addUserFormFields.usersAccountType.name as keyof AddUserFormShape}
+              name={addCustomersFormFields.routType.name as keyof AddNewCustomersFormShape}
               render={({ field }) => (
                 <Select
-                  {...addUserFormFields.usersAccountType}
+                  {...addCustomersFormFields.routType}
                   {...field}
                   withAction={false}
                   withClear={false}
-                  error={formMethods.formState.errors.usersAccountType?.message}
+                  error={formMethods.formState.errors.routType?.message}
                 />
               )}
             />
-            {accountWatch.usersAccountType == RoleType.VIEWER && accountsOptions && (
-              <MultipleSelect
-                formMethods={formMethods}
-                options={accountsOptions}
-                defaultValues={defaultMultipleValue}
-                {...addUserFormFields.usersAccountList}
-                error={formMethods.formState.errors.usersAccountList?.message}
-              />
-            )}
+            <Controller
+              control={formMethods.control}
+              name={addCustomersFormFields.twilioRoute.name as keyof AddNewCustomersFormShape}
+              render={({ field }) => (
+                <Select
+                  {...addCustomersFormFields.twilioRoute}
+                  {...field}
+                  withAction={false}
+                  withClear={false}
+                  error={formMethods.formState.errors.twilioRoute?.message}
+                />
+              )}
+            />
             {!isEditable ? (
               <div className={styles.signIn__form__group__button}>
                 <Button type='submit' color='secondary' size='m'>

@@ -4,18 +4,17 @@ import classNames from 'classnames';
 import { isNull } from 'lodash';
 
 import { CloseIcon } from 'assets/icons';
-import { MultipleSelect, TableSearch } from 'components';
+import { TableSearch } from 'components';
 import { useAppDispatch, useAppSelector, useForm } from 'hooks';
 import { createObject, filterObject } from 'utils';
-import { statusOptions, AccountTypeOptions } from 'utils/filterHelper';
 import { userFilterClear, usersFilterUpdate } from 'store/adminSlice/thunks';
 import { adminSelectors } from 'store/adminSlice';
 
-import styles from './UsersFilters.module.scss';
+import styles from './CustomersFilters.module.scss';
 import { FilterFormShape } from './types';
 import { filterFormFields, filterSchemaKeys } from './fields';
 
-const UsersFilters = () => {
+const CustomersFilters = () => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
   const { filter } = useAppSelector(adminSelectors.selectUsersFilter);
@@ -26,11 +25,10 @@ const UsersFilters = () => {
     mode: 'onChange',
     schemaKeys: filterSchemaKeys,
     defaultValues: {
-      userName: '',
-      userStatus: '',
-      userId: '',
-      userType: '',
-      userEmail: '',
+      name: '',
+      lastname: '',
+      email: '',
+      id: '',
     },
   });
 
@@ -69,42 +67,10 @@ const UsersFilters = () => {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
-        <div className={styles.item}>
-          <TableSearch
-            {...filterFormFields.userName}
-            {...formMethods.register('userName')}
-            className={styles.search}
-            callback={handleFilter}
-            filterName={'username'}
-            clearAll={clearAll}
-          />
-        </div>
-        <div className={(styles.item, styles.multipleSelect)}>
-          <MultipleSelect
-            formMethods={formMethods}
-            {...filterFormFields.userStatus}
-            className={styles.select}
-            callback={handleFilter}
-            filterName={'status'}
-            options={statusOptions}
-          />
-        </div>
-
-        <div className={(styles.item, styles.multipleSelect)}>
-          <MultipleSelect
-            formMethods={formMethods}
-            {...filterFormFields.userType}
-            className={styles.select}
-            callback={handleFilter}
-            filterName={'role'}
-            options={AccountTypeOptions}
-          />
-        </div>
-
         <div className={advancedClass}>
           <TableSearch
-            {...filterFormFields.userId}
-            {...formMethods.register('userId')}
+            {...filterFormFields.id}
+            {...formMethods.register('id')}
             className={styles.search}
             callback={handleFilter}
             filterName={'id'}
@@ -112,10 +78,31 @@ const UsersFilters = () => {
             closed={!isMore}
           />
         </div>
+        <div className={styles.item}>
+          <TableSearch
+            {...filterFormFields.name}
+            {...formMethods.register('name')}
+            className={styles.search}
+            callback={handleFilter}
+            filterName={'name'}
+            clearAll={clearAll}
+          />
+        </div>
+        <div className={(styles.item, styles.multipleSelect)}>
+          <TableSearch
+            {...filterFormFields.lastname}
+            {...formMethods.register('lastname')}
+            className={styles.search}
+            callback={handleFilter}
+            filterName={'lastname'}
+            clearAll={clearAll}
+          />
+        </div>
+
         <div className={advancedClass}>
           <TableSearch
-            {...filterFormFields.userEmail}
-            {...formMethods.register('userEmail')}
+            {...filterFormFields.email}
+            {...formMethods.register('email')}
             className={styles.search}
             callback={handleFilter}
             filterName={'email'}
@@ -137,4 +124,4 @@ const UsersFilters = () => {
   );
 };
 
-export default UsersFilters;
+export default CustomersFilters;

@@ -1,21 +1,28 @@
-import { AccountTypeOptions } from 'utils/filterHelper';
+import { RoutingTypeOptions, TwilioOptions } from 'utils/filterHelper';
 
 import { FormField } from '../../forms/types';
 
-import { AddUserFormShape } from './types';
+import { AddNewCustomersFormShape } from './types';
 
-export const addUserFormFields: FormField<keyof AddUserFormShape> = {
+export const addCustomersFormFields: FormField<keyof AddNewCustomersFormShape> = {
   name: {
     name: 'name',
     type: 'text',
     label: 'Name',
-    id: 'addUser.name',
+    id: 'addCustomer.name',
     placeholder: 'Enter Name',
+  },
+  lastname: {
+    name: 'lastName',
+    type: 'text',
+    label: 'Last Name',
+    id: 'addCustomer.lastname',
+    placeholder: 'Enter Last Name',
   },
   email: {
     name: 'email',
     type: 'text',
-    id: 'addUser.email',
+    id: 'addCustomer.email',
     label: 'Email Address',
     placeholder: 'Enter Email',
   },
@@ -23,28 +30,32 @@ export const addUserFormFields: FormField<keyof AddUserFormShape> = {
     name: 'password',
     type: 'password',
     label: 'Password',
-    id: 'addUser.password',
+    id: 'addCustomer.password',
     placeholder: 'Enter Password',
   },
   confirmPassword: {
     name: 'confirmPassword',
     type: 'password',
     label: 'Repeat Password',
-    id: 'addUser.confirmPassword',
+    id: 'addCustomer.confirmPassword',
     placeholder: 'Confirm Password',
   },
-  usersAccountType: {
-    name: 'usersAccountType',
-    label: 'Account type',
-    id: 'addUser.usersAccountType',
-    placeholder: 'Choose Type',
-    options: AccountTypeOptions,
+  twilioRoute: {
+    name: 'twilioRoute',
+    label: 'TWILIO Route',
+    id: 'addCustomer.twilioRoute',
+    placeholder: 'Select',
+    options: TwilioOptions,
   },
-  usersAccountList: {
-    name: 'usersAccountList',
-    id: 'addUser.usersAccountList',
-    placeholder: 'Choose Accounts',
+  routType: {
+    name: 'routType',
+    label: 'Routing Type',
+    id: 'addCustomer.usersAccountType',
+    placeholder: 'Select',
+    options: RoutingTypeOptions,
   },
 };
 
-export const addSchemaKeys = Object.keys(addUserFormFields) as (keyof AddUserFormShape)[];
+export const addSchemaKeys = Object.keys(
+  addCustomersFormFields,
+) as (keyof AddNewCustomersFormShape)[];

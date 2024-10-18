@@ -17,11 +17,11 @@ import Pagination from '../Pagination';
 import TableHead from './TableHead';
 import styles from './Table.module.scss';
 import TableToolbar from './TableToolbar';
-import TableUsersBody from './TableBody/TableUsersBody';
 import TableAlertsBody from './TableBody/TableAlertsBody';
 import TableAccountBody from './TableBody/TableAccountsBody';
 import { ITableProps, SelectedAccount } from './types';
 import { AccountTabType, ActionType, OrderType } from './TableToolbar/types';
+import TableCustomersBody from './TableBody/TableUsersBody';
 
 const Table = ({
   take,
@@ -61,6 +61,7 @@ const Table = ({
       : action === ActionType.ACCOUNTS
       ? accountFilter.skip / accountFilter.take
       : alertsFilter.skip / alertsFilter.take;
+
   const orderSort = (elem: any): OrderType.DESC | OrderType.ASC =>
     elem.order === OrderType.DESC ? OrderType.ASC : OrderType.DESC;
 
@@ -197,8 +198,8 @@ const Table = ({
     };
 
     switch (action) {
-      case ActionType.USERS: {
-        return <TableUsersBody {...commonProps} />;
+      case ActionType.CUSTOMERS: {
+        return <TableCustomersBody {...commonProps} />;
       }
       case ActionType.ACCOUNTS: {
         return <TableAccountBody {...commonProps} handleChartAction={handleChartAction} />;

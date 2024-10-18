@@ -1,4 +1,4 @@
-import { usersTable } from 'constants/index';
+import { customersTable } from 'constants/index';
 
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -49,7 +49,7 @@ const Cdr = () => {
       action={ActionType.USERS}
       linkText='user'
       type='secondary'
-      headCells={usersTable}
+      headCells={customersTable}
       totalCount={totalCount}
       linkTo={Routes.AddNewUser}
     />

@@ -4,7 +4,6 @@ import Recording from 'containers/Numbers';
 import {
   Error,
   SignIn,
-  AddNewUser,
   AddNewAccount,
   Customers,
   Extensions,
@@ -14,6 +13,7 @@ import {
   Meetings,
   Sms,
   Api,
+  AddNewCustomers,
 } from '../containers';
 import { RoutesProps, Routes } from '../types';
 
@@ -25,17 +25,17 @@ const routes: RoutesProps[] = [
     withHeader: false,
   },
   {
-    path: Routes.AddNewUser,
+    path: Routes.AddNewCustomers,
     text: 'users_settings_header',
     isProtected: true,
-    component: <AddNewUser />,
+    component: <AddNewCustomers />,
     isBackBtn: true,
   },
   {
     path: `${Routes.EditUser}/:id`,
     text: 'users_settings_header',
     isProtected: true,
-    component: <AddNewUser />,
+    component: <AddNewCustomers />,
     isBackBtn: true,
   },
   // {

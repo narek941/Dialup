@@ -1,10 +1,10 @@
-export interface IAddUNewUserForm {
+export interface IAAddNewCustomersForm {
   name: string;
   email: string;
   password: string;
   accountType: string;
 }
-export interface IAddNewUserProps {
+export interface IAddNewCustomersProps {
   state?: {
     id?: number;
   };
