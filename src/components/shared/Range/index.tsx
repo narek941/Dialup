@@ -91,11 +91,11 @@ const RangeSwipe = forwardRef<HTMLInputElement, IRangeSwipe>(
       setFirstInput(Number(target.value));
     };
 
-    const handleRangeChange = (event: Event, newValue: number | number[]) => {
+    const handleRangeChange = (event: Event, newValue: string | string[]) => {
       setFirstInput(NaN);
       setSecondInput(NaN);
       setDefaultRangeValue(null as any);
-      onChange(newValue as number[]);
+      onChange(newValue);
     };
 
     const handleSecondChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
@@ -105,7 +105,7 @@ const RangeSwipe = forwardRef<HTMLInputElement, IRangeSwipe>(
     const handleClear = (event?: React.FormEvent<HTMLElement>) => {
       event?.stopPropagation();
       onChange(['', '']);
-      setDefaultRangeValue([min, max]);
+      setDefaultRangeValue([Number(min), Number(max)]);
       callback && callback(filterName, null);
     };
 
@@ -121,7 +121,7 @@ const RangeSwipe = forwardRef<HTMLInputElement, IRangeSwipe>(
     }, [closed]);
 
     useEffect(() => {
-      setDefaultRangeValue([min, max]);
+      setDefaultRangeValue([Number(min), Number(max)]);
     }, [min, max]);
 
     useOnClickOutside(customRef, handleSubmit);
@@ -171,7 +171,7 @@ const RangeSwipe = forwardRef<HTMLInputElement, IRangeSwipe>(
                 name={name}
                 max={Number(max)}
                 min={Number(min)}
-                onChange={handleRangeChange}
+                onChange={handleRangeChange as any}
                 aria-labelledby='input-slider'
                 step={isPercent ? 0.01 : 0.0001}
               />
