@@ -29,8 +29,13 @@ export interface ITableProps {
   headCells: HeadCell[];
   type: TypeType;
   sort?: string;
-  action: ActionType.USERS | ActionType.ACCOUNTS | ActionType.ALERTS | ActionType.CUSTOMERS;
-  linkText?: 'user' | 'account' | 'customers';
+  action:
+    | ActionType.USERS
+    | ActionType.ACCOUNTS
+    | ActionType.ALERTS
+    | ActionType.CUSTOMERS
+    | ActionType.TRUNKS;
+  linkText?: 'user' | 'account' | 'customers' | 'trunks';
   linkTo?: Routes;
   users?: boolean;
   handleClose?: () => void;

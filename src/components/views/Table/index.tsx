@@ -21,7 +21,8 @@ import TableAlertsBody from './TableBody/TableAlertsBody';
 import TableAccountBody from './TableBody/TableAccountsBody';
 import { ITableProps, SelectedAccount } from './types';
 import { AccountTabType, ActionType, OrderType } from './TableToolbar/types';
-import TableCustomersBody from './TableBody/TableUsersBody';
+import TableCustomersBody from './TableBody/TableCustomersBody';
+import TableTrunksBody from './TableBody/TableTrunksBody';
 
 const Table = ({
   take,
@@ -206,6 +207,9 @@ const Table = ({
       }
       case ActionType.ALERTS: {
         return <TableAlertsBody rows={rows} />;
+      }
+      case ActionType.TRUNKS: {
+        return <TableTrunksBody {...commonProps} />;
       }
 
       default:

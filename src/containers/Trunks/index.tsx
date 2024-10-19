@@ -1,4 +1,4 @@
-import { alertsTable } from 'constants/index';
+import { trunksTable } from 'constants/index';
 
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -6,6 +6,8 @@ import { Loader, Table } from 'components';
 import { useAppDispatch } from 'hooks';
 import { alertsActions, alertsSelectors } from 'store/alertsSlice';
 import { ActionType } from 'components/views/Table/TableToolbar/types';
+import { testTrunksList } from 'constants/test';
+import { Routes } from 'types/routes';
 
 const Trunks = () => {
   const dispatch = useAppDispatch();
@@ -33,13 +35,15 @@ const Trunks = () => {
   return (
     <Table
       take={take}
-      rows={list}
+      rows={testTrunksList || list}
       sort={sort}
       order={order}
       type='primary'
-      action={ActionType.ALERTS}
-      totalCount={totalCount}
-      headCells={alertsTable.mainTable}
+      action={ActionType.TRUNKS}
+      totalCount={testTrunksList.length || totalCount}
+      headCells={trunksTable}
+      linkTo={Routes.AddNewTrunk}
+      linkText='trunks'
     />
   );
 };

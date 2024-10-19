@@ -11,7 +11,6 @@ import classNames from 'classnames';
 
 import { ParamsWithId } from 'types';
 import { useAppDispatch } from 'hooks';
-import { alertsTable } from 'constants/index';
 import { EmptyData, Pagination, ScrollWrapper } from 'components';
 import { accountsActions, accountsSelectors } from 'store/accountsSlice';
 import AnalyticsAlertsFilters from 'components/views/filters/AnalyticsAlertsFilters';
@@ -65,7 +64,7 @@ const AnalyticsAlertTable = ({ filterVisible }: any) => {
           <Table className={styles.inner}>
             <TableHead className={styles.container__header}>
               <TableRow className={styles.container__header__row}>
-                {alertsTable.accountAnalyticsTable.map(({ id, label, value }) => (
+                {([] as any).map(({ id, label, value }: any) => (
                   <TableCell align='left' className={styles.container__header__ceil} key={id}>
                     <div
                       role='button'
