@@ -51,7 +51,7 @@ const Customers = () => {
       lastname: 'Hakobyan',
       email: 'eduard@example.com	',
     },
-  ] as RowsType[];
+  ] as unknown as RowsType[];
   const { list, usersFilter, totalCount } = useSelector(adminSelectors.selectAdmin);
   const role = useSelector(authSelectors.selectRole);
 
@@ -82,7 +82,7 @@ const Customers = () => {
   return (
     <Table
       take={take}
-      rows={testList}
+      rows={testList || list}
       sort={sort}
       order={order}
       action={ActionType.CUSTOMERS}
