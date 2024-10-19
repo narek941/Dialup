@@ -50,7 +50,7 @@ const formDestinationsSchema = Yup.object().shape(
 );
 
 export const composeFormSchema = <K extends FormFieldNames>(fields: K[]): AnyObjectSchema => {
-  const schemaMap: Record<FormFieldNames, SchemaLike> = {
+  const schemaMap: Record<FormFieldNames | any, SchemaLike> = {
     isEditable: Yup.boolean(),
 
     email: Yup.string()
