@@ -16,6 +16,7 @@ import { adminActions } from 'store/adminSlice';
 import styles from './TableToolbar.module.scss';
 import { AccountTabType, ActionType, ITableToolbarProps } from './types';
 import CustomersFilters from 'components/views/filters/CustomersFilters';
+import TrinksFilters from 'components/views/filters/TrunkssFilters';
 
 const TableToolbar = ({ linkText, linkTo, action }: ITableToolbarProps): JSX.Element => {
   const navigate = useNavigate();
@@ -24,13 +25,6 @@ const TableToolbar = ({ linkText, linkTo, action }: ITableToolbarProps): JSX.Ele
 
   const [filterVisible, setFilterVisible] = useState(false);
   const text = `+ ADD NEW ${linkText}`;
-  const toolbarClasses = classNames(styles.toolbar, {
-    [styles.toolbar_noLink]: !linkTo,
-  });
-
-  const wrapperClasses = classNames(styles.wrapper, {
-    [styles.wrapper__account]: action === ActionType.ACCOUNTS,
-  });
 
   const handleFilter = () => setFilterVisible(!filterVisible);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -64,6 +58,8 @@ const TableToolbar = ({ linkText, linkTo, action }: ITableToolbarProps): JSX.Ele
       return <AccountsFilters />;
     } else if (action === ActionType.CUSTOMERS) {
       return <CustomersFilters />;
+    } else if (action === ActionType.TRUNKS) {
+      return <TrinksFilters />;
     } else {
       return <AlertsFilters />;
     }
@@ -103,8 +99,16 @@ const TableToolbar = ({ linkText, linkTo, action }: ITableToolbarProps): JSX.Ele
   };
 
   return (
-    <div className={wrapperClasses}>
-      <div className={toolbarClasses}>
+    <div
+      className={classNames(styles.wrapper, {
+        [styles.wrapper__account]: action === ActionType.ACCOUNTS,
+      })}
+    >
+      <div
+        className={classNames(styles.toolbar, {
+          [styles.toolbar_noLink]: !linkTo,
+        })}
+      >
         {renderTab()}
         <div className={styles.toolbar__filter}>
           {linkTo && action === ActionType.ACCOUNTS && (

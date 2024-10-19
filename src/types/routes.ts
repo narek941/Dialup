@@ -29,6 +29,8 @@ export enum Routes {
   EditUser = '/users/edit',
 
   AddNewCustomers = '/customers/create',
+  AddNewTrunk = '/trunks/create',
+
   AddNewUser = '/users/create',
 
   AddNewAccount = '/accounts/create',
