@@ -2,6 +2,8 @@ import { HeadCell } from 'types';
 import { Routes } from 'types/routes';
 
 import { ActionType } from './TableToolbar/types';
+import { FilterFormShape } from '../filters/TradesFilters/types';
+import { FormField } from './Filters/types';
 
 export interface Data {
   id: string;
@@ -26,22 +28,33 @@ export type TypeType = 'primary' | 'secondary' | 'tertiary';
 
 export interface ITableProps {
   rows: RowsType[];
+  filterField: FormField[];
   headCells: HeadCell[];
   type: TypeType;
   sort?: string;
   action:
     | ActionType.USERS
     | ActionType.ACCOUNTS
-    | ActionType.ALERTS
     | ActionType.CUSTOMERS
-    | ActionType.TRUNKS;
+    | ActionType.TRUNKS
+    | ActionType.EXTENTIONS;
   linkText?: 'user' | 'account' | 'customers' | 'trunks';
   linkTo?: Routes;
-  users?: boolean;
-  handleClose?: () => void;
   take: number;
   order?: string;
   totalCount: number;
+  page: number;
+  tableName: string;
+  dataCells: string[];
+  handleSort: (event: React.MouseEvent<unknown>, property: any) => void;
+  handleDelete?: (id: number) => void;
+  handleStart?: () => void;
+  handleChangePage: (event: unknown, newPage: number) => void;
+  handleStop?: () => void;
+  showEditAction?: boolean;
+  handleChangeRowsPerPage: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSmsPermision?: (id: number) => void;
+  handleAPIPermision?: (id: number) => void;
 }
 export interface UserData {
   id: string;

@@ -59,3 +59,42 @@ export const testTrunksList = [
     domain: null,
   },
 ] as unknown as RowsType[];
+
+export const testExtentionsList = [
+  {
+    id: '2',
+    username: 'ipeim',
+    password: 'ipeim',
+    callerId: 'ipeim@ipeim.com',
+  },
+  {
+    id: '3',
+    username: 'supcom',
+    password: 'supcom',
+    callerId: 'supcom@supcom.com',
+  },
+  {
+    id: '4',
+    username: 'lsasg',
+    password: 'lsasg',
+    callerId: 'lsasg@lsasg.com',
+  },
+  {
+    id: '7',
+    username: 'amosbah',
+    password: 'amosbah',
+    callerId: 'amosbah@amosbah.com',
+  },
+  {
+    id: '8',
+    username: 'sip',
+    password: 'sip',
+    callerId: 'sip@sip.com',
+  },
+  {
+    id: '9',
+    username: 'Eduard',
+    password: 'Hakobyan',
+    callerId: 'eduard@example.com	',
+  },
+] as unknown as RowsType[];

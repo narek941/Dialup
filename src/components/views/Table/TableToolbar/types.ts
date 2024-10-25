@@ -1,9 +1,11 @@
 import { Routes } from 'types';
+import { FormField } from '../Filters/types';
 
 export interface ITableToolbarProps {
-  linkText?: 'user' | 'account' | 'customers' | 'trunks';
+  linkText?: string;
   linkTo?: Routes;
   onClick?: any;
+  filterField: FormField[];
   action: any;
 }
 
@@ -26,7 +28,7 @@ export enum FutureType {
 export enum ActionType {
   USERS = 'users',
   ACCOUNTS = 'accounts',
-  ALERTS = 'alerts',
+  EXTENTIONS = 'extentions',
   CUSTOMERS = 'customers',
   TRUNKS = 'trunks',
 }

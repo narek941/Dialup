@@ -9,7 +9,7 @@ const Alert = ({
   handleClose,
   handleAction,
   id,
-  type,
+  type = 'DELETE',
   text,
   isActionIsDone = false,
 }: AlertProps) => {

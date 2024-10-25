@@ -1,5 +1,3 @@
-import { customersTable } from 'constants/index';
-
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
@@ -10,15 +8,22 @@ import { adminActions, adminSelectors } from 'store/adminSlice';
 import { RoleType } from 'types/api';
 import { authSelectors } from 'store/authSlice';
 import { ActionType } from 'components/views/Table/TableToolbar/types';
+import { filterFormFields } from 'containers/Trunks/fields';
+import extentionsTable from 'constants/tables/extentions';
+import { testCustomersList, testExtentionsList } from 'constants/test';
 
 const Cdr = () => {
   const dispatch = useAppDispatch();
+
   const { list, usersFilter, totalCount } = useSelector(adminSelectors.selectAdmin);
   const role = useSelector(authSelectors.selectRole);
 
   const [isLoading, setIsLoading] = useState(true);
 
   const { take, order, sort } = usersFilter;
+  /* eslint-disable no-console */
+
+  const handleDelete = (id: number) => console.log('Delete ' + id);
 
   useEffect(() => {
     const getUsers = async () => {
@@ -42,16 +47,24 @@ const Cdr = () => {
 
   return (
     <Table
+      page={0}
       take={take}
-      rows={list}
       sort={sort}
       order={order}
-      action={ActionType.USERS}
-      linkText='user'
       type='secondary'
-      headCells={customersTable}
-      totalCount={totalCount}
-      linkTo={Routes.AddNewUser}
+      filterField={filterFormFields}
+      handleSort={() => {}}
+      tableName='extensions'
+      showEditAction
+      headCells={extentionsTable}
+      handleDelete={handleDelete}
+      handleChangePage={() => {}}
+      action={ActionType.EXTENTIONS}
+      linkTo={Routes.AddNewCustomers}
+      rows={testExtentionsList || list}
+      handleChangeRowsPerPage={() => {}}
+      dataCells={['id', 'username', 'password', 'callerId']}
+      totalCount={totalCount || testCustomersList.length}
     />
   );
 };

@@ -10,6 +10,7 @@ import { authSelectors } from 'store/authSlice';
 import { ActionType } from 'components/views/Table/TableToolbar/types';
 import customersTable from 'constants/tables/customers';
 import { testCustomersList } from 'constants/test';
+import { filterFormFields } from './fields';
 
 const Customers = () => {
   const dispatch = useAppDispatch();
@@ -20,6 +21,12 @@ const Customers = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const { take, order, sort } = usersFilter;
+  /* eslint-disable no-console */
+  const handleDelete = (id: number) => console.log('Delete ' + id);
+
+  const handleEnableSms = (id: number) => console.log('Enable SMS :  ' + id);
+
+  const handleEnableApi = (id: number) => console.log('Enable Api :  ' + id);
 
   useEffect(() => {
     const getUsers = async () => {
@@ -43,16 +50,26 @@ const Customers = () => {
 
   return (
     <Table
+      page={0}
       take={take}
-      rows={testCustomersList || list}
       sort={sort}
       order={order}
-      action={ActionType.CUSTOMERS}
-      linkText='customers'
       type='secondary'
+      filterField={filterFormFields}
+      handleSort={() => {}}
+      tableName='customers'
+      showEditAction
       headCells={customersTable}
-      totalCount={totalCount || testCustomersList.length}
+      handleDelete={handleDelete}
+      handleChangePage={() => {}}
+      action={ActionType.CUSTOMERS}
       linkTo={Routes.AddNewCustomers}
+      rows={testCustomersList || list}
+      handleChangeRowsPerPage={() => {}}
+      handleSmsPermision={handleEnableSms}
+      handleAPIPermision={handleEnableApi}
+      dataCells={['id', 'name', 'lastname', 'email']}
+      totalCount={totalCount || testCustomersList.length}
     />
   );
 };

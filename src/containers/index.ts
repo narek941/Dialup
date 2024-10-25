@@ -4,7 +4,6 @@ export { default as SignIn } from './SignIn';
 export { default as CDR } from './CDR';
 export { default as Customers } from './Customers';
 export { default as AddNewCustomers } from './AddNewCustomers';
-export { default as AddNewAccount } from './AddNewAccount';
 export { default as Extensions } from './Extensions';
 export { default as Meetings } from './Meetings';
 export { default as Numbers } from './Numbers';
