@@ -26,6 +26,11 @@
   }
 }
 
+.multipleSelect {
+  max-width: 230px;
+  width: 100%;
+}
+
 .container {
   gap: 23px;
   padding: 16px;
@@ -47,12 +52,11 @@
 }
 
 .advanced {
+  gap: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
   &__hide {
     display: none;
   }
-}
-
-.multipleSelect {
-  max-width: 230px;
-  width: 100%;
 }

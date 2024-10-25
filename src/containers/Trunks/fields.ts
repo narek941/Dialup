@@ -1,34 +1,30 @@
-import { FormField } from '../../../forms/types';
+import { FormField } from 'components/views/Table/Filters/types';
 
-import { FilterFormShape } from './types';
-
-export const filterFormFields: FormField<keyof FilterFormShape> = {
-  identifier: {
+export const filterFormFields: FormField[] = [
+  {
     name: 'identifier',
     type: 'Search',
     id: 'filterForm.identifier',
     placeholder: 'Enter Identifier',
   },
 
-  hosts: {
+  {
     name: 'hosts',
     type: 'Search',
     id: 'filterForm.hosts',
     placeholder: 'Enter Hosts',
   },
-  id: {
+  {
     name: 'id',
     type: 'Search',
     id: 'filterForm.id',
     placeholder: 'Enter ID',
   },
 
-  domain: {
+  {
     name: 'domain',
     type: 'Search',
     id: 'filterForm.domain',
     placeholder: 'Enter Domain',
   },
-};
-
-export const filterSchemaKeys = Object.keys(filterFormFields) as (keyof FilterFormShape)[];
+];

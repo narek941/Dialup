@@ -4,7 +4,6 @@ import Recording from 'containers/Numbers';
 import {
   Error,
   SignIn,
-  AddNewAccount,
   Customers,
   Extensions,
   Numbers,
@@ -51,14 +50,14 @@ const routes: RoutesProps[] = [
     path: Routes.AddNewAccount,
     text: 'accounts_settings_header',
     isProtected: true,
-    component: <AddNewAccount />,
+    component: <AddNewCustomers />,
     isBackBtn: true,
   },
   {
     path: `${Routes.EditAccount}/:id`,
     text: 'accounts_settings_header',
     isProtected: true,
-    component: <AddNewAccount />,
+    component: <AddNewCustomers />,
     isBackBtn: true,
   },
   {

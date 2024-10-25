@@ -7,18 +7,20 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { AddAccountIcon, FilterIcon } from 'assets/icons';
 import { AccessWrapper, Alert, LinkButton, Tab } from 'components';
-import AccountsFilters from 'components/views/filters/AccountsFilters';
-import AlertsFilters from 'components/views/filters/AlertsFilters';
 import { accountsActions } from 'store/accountsSlice';
 import { useAppDispatch } from 'hooks';
 import { adminActions } from 'store/adminSlice';
 
 import styles from './TableToolbar.module.scss';
 import { AccountTabType, ActionType, ITableToolbarProps } from './types';
-import CustomersFilters from 'components/views/filters/CustomersFilters';
-import TrinksFilters from 'components/views/filters/TrunkssFilters';
+import { Filters } from '../Filters';
 
-const TableToolbar = ({ linkText, linkTo, action }: ITableToolbarProps): JSX.Element => {
+const TableToolbar = ({
+  linkText,
+  linkTo,
+  action,
+  filterField,
+}: ITableToolbarProps): JSX.Element => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
@@ -53,17 +55,7 @@ const TableToolbar = ({ linkText, linkTo, action }: ITableToolbarProps): JSX.Ele
     dispatch(accountsActions.platformUpdate({ platform: platformId }));
   }, [searchParams.get('tab')]);
 
-  const renderFilter = () => {
-    if (action === ActionType.ACCOUNTS) {
-      return <AccountsFilters />;
-    } else if (action === ActionType.CUSTOMERS) {
-      return <CustomersFilters />;
-    } else if (action === ActionType.TRUNKS) {
-      return <TrinksFilters />;
-    } else {
-      return <AlertsFilters />;
-    }
-  };
+  const renderFilter = () => <Filters filterField={filterField} />;
 
   const renderTab = () => {
     if (action === ActionType.ACCOUNTS) {
