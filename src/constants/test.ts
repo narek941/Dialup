@@ -98,3 +98,168 @@ export const testExtentionsList = [
     callerId: 'eduard@example.com	',
   },
 ] as unknown as RowsType[];
+
+export const testNumbersList = [
+  {
+    id: '2',
+    number: '17604592873',
+  },
+  {
+    id: '6',
+    number: '19898008085',
+  },
+  {
+    id: '8',
+    number: '19898008085',
+  },
+] as unknown as RowsType[];
+
+export const testRoutingList = [
+  {
+    id: '2',
+    name: '17604592873',
+    description: '17604592873',
+  },
+  {
+    id: '6',
+    name: '19898008085',
+    description: '19898008085',
+  },
+  {
+    id: '8',
+    name: '3000',
+    description: '3000',
+  },
+] as unknown as RowsType[];
+
+export const testRecordingList = [
+  {
+    id: '2',
+    name: 'Asterisk',
+    path: '/media/4750a309-3065-417d-9997-dd0c02a6a3af.wav',
+    source: 'google-tts',
+    listen: 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+  },
+  {
+    id: '6',
+    name: 'Asterisk',
+    path: '/media/4750a309-3065-417d-9997-dd0c02a6a3af.wav',
+    source: 'google-tts',
+    listen: 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+  },
+  {
+    id: '8',
+    name: 'Asterisk',
+    path: '/media/4750a309-3065-417d-9997-dd0c02a6a3af.wav',
+    source: 'google-tts',
+    listen: 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+  },
+] as unknown as RowsType[];
+
+export const testCDRList = [
+  {
+    id: '2',
+    date: 'Oct. 24, 2024, 4:14 p.m.',
+    from: '6004',
+    to: '2000',
+    duration: '38',
+    inChannel: '1729786499.137',
+    outChannel: null,
+    lastStep: 'HANGUP',
+    recording: 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+    voiceMail: 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+  },
+  {
+    id: '3',
+    date: 'Oct. 24, 2024, 4:14 p.m.',
+    from: '6004',
+    to: '2000',
+    duration: '38',
+    inChannel: '1729786499.137',
+    outChannel: null,
+    lastStep: 'HANGUP',
+    recording: 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+    voiceMail: 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+  },
+  {
+    id: '8',
+    date: 'Oct. 24, 2024, 4:14 p.m.',
+    from: '6004',
+    to: '2000',
+    duration: '38',
+    inChannel: '1729786499.137',
+    outChannel: null,
+    lastStep: 'HANGUP',
+    recording: 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+    voiceMail: 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+  },
+] as unknown as RowsType[];
+
+export const t1estRoutingList = [
+  {
+    id: '2',
+    name: '17604592873',
+    description: '17604592873',
+  },
+  {
+    id: '6',
+    name: '19898008085',
+    description: '19898008085',
+  },
+  {
+    id: '8',
+    name: '3000',
+    description: '3000',
+  },
+] as unknown as RowsType[];
+
+export const testMeetingList = [
+  {
+    id: '2',
+    name: '16-01-2024	',
+    uuid: '125478-9658-32569-98745',
+    description: '16-01-2024 test',
+    pin: '1234567',
+    participants: null,
+  },
+  {
+    id: '2',
+    name: '16-01-2024	',
+    uuid: '125478-9658-32569-98745',
+    description: '16-01-2024 test',
+    pin: '1234567',
+    participants: null,
+  },
+  {
+    id: '2',
+    name: '16-01-2024	',
+    uuid: '125478-9658-32569-98745',
+    description: '16-01-2024 test',
+    pin: '1234567',
+    participants: null,
+  },
+  {
+    id: '2',
+    name: '16-01-2024	',
+    uuid: '125478-9658-32569-98745',
+    description: '16-01-2024 test',
+    pin: '1234567',
+    participants: null,
+  },
+  {
+    id: '2',
+    name: '16-01-2024	',
+    uuid: '125478-9658-32569-98745',
+    description: '16-01-2024 test',
+    pin: '1234567',
+    participants: null,
+  },
+  {
+    id: '2',
+    name: '16-01-2024	',
+    uuid: '125478-9658-32569-98745',
+    description: '16-01-2024 test',
+    pin: '1234567',
+    participants: null,
+  },
+] as unknown as RowsType[];

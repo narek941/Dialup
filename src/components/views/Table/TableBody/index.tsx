@@ -10,6 +10,8 @@ import styles from '../Table.module.scss';
 
 import { ITableBody } from './types';
 import ToggleAction from '../ToggleAction';
+import { isAudio } from 'utils/isAudio';
+import AudioPlayer from 'components/shared/AudioPlayer';
 
 const TableBody = ({
   rows,
@@ -26,23 +28,30 @@ const TableBody = ({
     const isLastItem = index === rows.length - 1;
     const id = r[dataCells[0]];
 
+    const renderCell = (item: string, isLink?: boolean) => {
+      if (isLink) {
+        return (
+          <Link
+            to={`${Routes.Customers}/${r[dataCells[0]]}`}
+            className={styles.table__body__row__ceil__actions__setting}
+          >
+            {item}
+          </Link>
+        );
+      } else if (isAudio(item)) {
+        return <AudioPlayer src={item} />;
+      } else {
+        return item;
+      }
+    };
+
     return (
       <TableRow className={styles.table__body__row} tabIndex={id} key={index}>
         {dataCells.map((item: string, index: number) => (
           <TableCell key={item} align='left' className={styles.table__body__row__ceil}>
-            {!index ? (
-              <Link
-                to={`${Routes.Customers}/${r[dataCells[0]]}`}
-                className={styles.table__body__row__ceil__actions__setting}
-              >
-                {r[dataCells[index]]}
-              </Link>
-            ) : (
-              r[dataCells[index]]
-            )}
+            {renderCell(r[dataCells[index]], !index)}
           </TableCell>
         ))}
-
         <TableCell
           className={classNames(
             styles.table__body__row__ceil,

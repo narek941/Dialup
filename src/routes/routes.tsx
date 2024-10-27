@@ -1,5 +1,4 @@
 import Trunks from 'containers/Trunks';
-import Recording from 'containers/Numbers';
 
 import {
   Error,
@@ -10,11 +9,13 @@ import {
   Routing,
   CDR,
   Meetings,
+  Recording,
   Sms,
   Api,
   AddNewCustomers,
 } from '../containers';
 import { RoutesProps, Routes } from '../types';
+import Home from 'containers/Home';
 
 const routes: RoutesProps[] = [
   {
@@ -52,6 +53,12 @@ const routes: RoutesProps[] = [
     isProtected: true,
     component: <AddNewCustomers />,
     isBackBtn: true,
+  },
+  {
+    path: Routes.Home,
+    text: '',
+    isProtected: true,
+    component: <Home />,
   },
   {
     path: `${Routes.EditAccount}/:id`,

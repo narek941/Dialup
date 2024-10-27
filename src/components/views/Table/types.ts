@@ -32,12 +32,15 @@ export interface ITableProps {
   headCells: HeadCell[];
   type: TypeType;
   sort?: string;
-  action:
+  action?:
     | ActionType.USERS
     | ActionType.ACCOUNTS
     | ActionType.CUSTOMERS
     | ActionType.TRUNKS
-    | ActionType.EXTENTIONS;
+    | ActionType.NUMBERS
+    | ActionType.ROUTINGS
+    | ActionType.MEETINGS
+    | ActionType.RECORDING;
   linkText?: 'user' | 'account' | 'customers' | 'trunks';
   linkTo?: Routes;
   take: number;

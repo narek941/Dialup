@@ -7,10 +7,9 @@ import { useAppDispatch } from 'hooks';
 import { adminActions, adminSelectors } from 'store/adminSlice';
 import { RoleType } from 'types/api';
 import { authSelectors } from 'store/authSlice';
-import { ActionType } from 'components/views/Table/TableToolbar/types';
 import { filterFormFields } from 'containers/Trunks/fields';
-import extentionsTable from 'constants/tables/extentions';
-import { testCustomersList, testExtentionsList } from 'constants/test';
+import cdrTable from 'constants/tables/cdr';
+import { testCDRList } from 'constants/test';
 
 const Cdr = () => {
   const dispatch = useAppDispatch();
@@ -38,7 +37,7 @@ const Cdr = () => {
   }, [dispatch, usersFilter]);
 
   if (role && role !== RoleType.ADMIN) {
-    return <Navigate to={Routes.Dashboard} replace />;
+    return <Navigate to={Routes.Home} replace />;
   }
 
   if (isLoading) {
@@ -54,17 +53,24 @@ const Cdr = () => {
       type='secondary'
       filterField={filterFormFields}
       handleSort={() => {}}
-      tableName='extensions'
-      showEditAction
-      headCells={extentionsTable}
-      handleDelete={handleDelete}
+      tableName='CDR'
+      headCells={cdrTable}
       handleChangePage={() => {}}
-      action={ActionType.EXTENTIONS}
-      linkTo={Routes.AddNewCustomers}
-      rows={testExtentionsList || list}
+      rows={testCDRList || list}
       handleChangeRowsPerPage={() => {}}
-      dataCells={['id', 'username', 'password', 'callerId']}
-      totalCount={totalCount || testCustomersList.length}
+      dataCells={[
+        'id',
+        'date',
+        'from',
+        'to',
+        'duration',
+        'inChannel',
+        'outChannel',
+        'lastStep',
+        'recording',
+        'voiceMail',
+      ]}
+      totalCount={totalCount || testCDRList.length}
     />
   );
 };

@@ -74,7 +74,7 @@ export const Filters = ({ filterField }: FiltersProps) => {
               />
             </div>
           );
-        case 'Range':
+        case 'Range': {
           const min = filterValue[`min${field.name}` as any] || 0;
           const max = filterValue[`max${field.name}` as any] || 100;
           return (
@@ -95,6 +95,7 @@ export const Filters = ({ filterField }: FiltersProps) => {
               />
             </div>
           );
+        }
         default:
           return null;
       }

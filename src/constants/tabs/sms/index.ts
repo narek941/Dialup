@@ -3,32 +3,38 @@ import { FunctionComponent, SVGProps } from 'react';
 import { BinanceFutureCoinIcon, BinanceFutureIcon, BinanceSpotIcon } from 'assets/icons';
 import { AccountTabType } from 'components/views/Table/TableToolbar/types';
 
-export type AccountsTab = {
+export type ISmsTab = {
   id: string;
   name: string;
   Icon: FunctionComponent<SVGProps<SVGSVGElement>>;
   platformId: number;
 };
 
-const accountsTab: AccountsTab[] = [
+export const SmsTab: ISmsTab[] = [
   {
-    id: AccountTabType.BINANCE,
-    name: 'Binance Spot',
-    Icon: BinanceSpotIcon,
+    id: AccountTabType.CAMPAIGN,
+    name: 'CAMPAIGN',
+    Icon: BinanceFutureCoinIcon,
     platformId: 1,
   },
   {
-    id: AccountTabType.BINANCE_FUTURES_USDTM,
+    id: AccountTabType.CONTACT,
     name: 'USDT-M',
     Icon: BinanceFutureIcon,
     platformId: 2,
   },
   {
-    id: AccountTabType.BINANCE_FUTURES_COINM,
+    id: AccountTabType.NOTIFICATION,
+    name: 'COIN-M',
+    Icon: BinanceFutureCoinIcon,
+    platformId: 3,
+  },
+  {
+    id: AccountTabType.RATE,
     name: 'COIN-M',
     Icon: BinanceFutureCoinIcon,
     platformId: 3,
   },
 ];
 
-export default accountsTab;
+export default SmsTab;

@@ -92,7 +92,7 @@ const AddNewCustomers = () => {
   }, []);
 
   if (authRole && authRole !== RoleType.ADMIN) {
-    return <Navigate to={Routes.Dashboard} replace />;
+    return <Navigate to={Routes.Home} replace />;
   }
 
   return (

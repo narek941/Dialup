@@ -1,2 +1,1 @@
-export { default as accountAnalyticsTabs } from './accountAnalytics';
-export { default as accountsTab } from './accounts';
+export { default as SmsTab } from './sms';

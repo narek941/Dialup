@@ -9,5 +9,4 @@ export { default as TradeChart } from './TradeChart';
 export { default as Pagination } from './Pagination';
 export { default as SignInForm } from './SignInForm';
 export { default as AddUserForm } from './AddUserForm';
-export { default as AnalyticsTabs } from './AnalyticsTabs';
 export { default as AddAccountForm } from './AddAccountForm';

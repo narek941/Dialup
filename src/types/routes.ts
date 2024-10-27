@@ -12,7 +12,7 @@ export type RoutesProps = {
 export enum Routes {
   Error = '*',
   Default = '#',
-  Dashboard = '/',
+  Home = '/',
   Login = '/login',
   Customers = '/customers',
 
@@ -30,8 +30,13 @@ export enum Routes {
 
   AddNewCustomers = '/customers/create',
   AddNewTrunk = '/trunks/create',
+  AddNewRecording = '/recording/create',
+
+  AddNewNumber = '/numbers/create',
+  AddNewRoute = '/routing/create',
 
   AddNewUser = '/users/create',
+  AddNewMeeting = '/meeting/create',
 
   AddNewAccount = '/accounts/create',
   EditAccount = '/accounts/edit',

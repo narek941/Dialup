@@ -41,7 +41,7 @@ const Customers = () => {
   }, [dispatch, usersFilter]);
 
   if (role && role !== RoleType.ADMIN) {
-    return <Navigate to={Routes.Dashboard} replace />;
+    return <Navigate to={Routes.Home} replace />;
   }
 
   if (isLoading) {

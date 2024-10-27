@@ -1,19 +1,17 @@
-import accountsTab from 'constants/tabs/accounts';
-
 import classNames from 'classnames';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Tooltip } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { AddAccountIcon, FilterIcon } from 'assets/icons';
 import { AccessWrapper, Alert, LinkButton, Tab } from 'components';
-import { accountsActions } from 'store/accountsSlice';
 import { useAppDispatch } from 'hooks';
 import { adminActions } from 'store/adminSlice';
 
 import styles from './TableToolbar.module.scss';
 import { AccountTabType, ActionType, ITableToolbarProps } from './types';
 import { Filters } from '../Filters';
+import { SmsTab } from 'constants';
 
 const TableToolbar = ({
   linkText,
@@ -48,13 +46,6 @@ const TableToolbar = ({
     setSearchParams({ tab: id });
   };
 
-  useEffect(() => {
-    setFilterVisible(false);
-    const platformId =
-      accountsTab?.find((item: any) => searchParams?.get('tab') == item?.id)?.platformId || 1;
-    dispatch(accountsActions.platformUpdate({ platform: platformId }));
-  }, [searchParams.get('tab')]);
-
   const renderFilter = () => <Filters filterField={filterField} />;
 
   const renderTab = () => {
@@ -62,9 +53,9 @@ const TableToolbar = ({
       return (
         <div className={styles.tabs__wrapper}>
           <div className={styles.tabs}>
-            {accountsTab.map(({ id, name, Icon }) => (
+            {SmsTab.map(({ id, name, Icon }: any) => (
               <Tab
-                selectedTab={searchParams.get('tab') || AccountTabType.BINANCE}
+                selectedTab={searchParams.get('tab') || AccountTabType.CAMPAIGN}
                 handleChange={handleTabUpdateChange}
                 id={id}
                 name={name}

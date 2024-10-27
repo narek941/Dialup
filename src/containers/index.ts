@@ -11,3 +11,4 @@ export { default as Recording } from './Recording';
 export { default as Routing } from './Routing';
 export { default as Sms } from './Sms';
 export { default as Trunks } from './Trunks';
+export { default as Home } from './Home';

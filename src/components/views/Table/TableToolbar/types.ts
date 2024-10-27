@@ -10,9 +10,10 @@ export interface ITableToolbarProps {
 }
 
 export enum AccountTabType {
-  BINANCE = 'BINANCE',
-  BINANCE_FUTURES_USDTM = 'BINANCE_FUTURES_USDTM',
-  BINANCE_FUTURES_COINM = 'BINANCE_FUTURES_COINM',
+  NOTIFICATION = 'NOTIFICATION',
+  RATE = 'RATE',
+  CONTACT = 'CONTACT',
+  CAMPAIGN = 'CAMPAIGN',
 }
 
 export enum FutureTabType {
@@ -27,10 +28,14 @@ export enum FutureType {
 
 export enum ActionType {
   USERS = 'users',
+  MEETINGS = 'meetings',
   ACCOUNTS = 'accounts',
   EXTENTIONS = 'extentions',
   CUSTOMERS = 'customers',
   TRUNKS = 'trunks',
+  NUMBERS = 'numbers',
+  ROUTINGS = 'routings',
+  RECORDING = 'recording',
 }
 
 export enum OrderType {

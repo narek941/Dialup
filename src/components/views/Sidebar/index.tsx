@@ -48,7 +48,7 @@ const Sidebar: React.FC = () => {
           key={id}
           className={classNames(styles.list, {
             [styles.list__wrapper]:
-              linkTo === Routes.Dashboard
+              linkTo === Routes.Home
                 ? location.pathname === linkTo
                 : location.pathname.includes(linkTo) && open,
           })}
@@ -58,11 +58,11 @@ const Sidebar: React.FC = () => {
             className={classNames(styles.list, {
               [styles.list__open]: open,
               [styles.list__selected]:
-                linkTo === Routes.Dashboard
+                linkTo === Routes.Home
                   ? location.pathname === linkTo
                   : location.pathname.includes(linkTo),
               [styles.list__selected__open]:
-                linkTo === Routes.Dashboard
+                linkTo === Routes.Home
                   ? location.pathname === linkTo && open
                   : location.pathname.includes(linkTo) && open,
             })}
