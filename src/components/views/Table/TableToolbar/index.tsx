@@ -11,7 +11,7 @@ import { adminActions } from 'store/adminSlice';
 import styles from './TableToolbar.module.scss';
 import { AccountTabType, ActionType, ITableToolbarProps } from './types';
 import { Filters } from '../Filters';
-import { SmsTab } from 'constants';
+import { SmsTab } from 'constants/tabs';
 
 const TableToolbar = ({
   linkText,

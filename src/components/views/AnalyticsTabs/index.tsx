@@ -1,4 +1,4 @@
-import { accountAnalyticsTabs } from 'constants/index';
+import { SmsTab } from 'constants/index';
 
 import { useEffect, useState } from 'react';
 import { Paper, TableContainer, Tooltip } from '@mui/material';
@@ -120,7 +120,7 @@ const AnalyticsTabs = (): JSX.Element => {
       <TableContainer component={Paper} className={styles.table}>
         <div className={styles.tabs__wrapper}>
           <div className={styles.tabs}>
-            {accountAnalyticsTabs.map(({ id, name }) => (
+            {SmsTab.map(({ id, name }) => (
               <Tab
                 selectedTab={searchParams.get('campaigns') || TabType.campaigns}
                 handleChange={handleTabUpdateChange}

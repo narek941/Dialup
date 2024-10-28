@@ -40,7 +40,9 @@ export interface ITableProps {
     | ActionType.NUMBERS
     | ActionType.ROUTINGS
     | ActionType.MEETINGS
-    | ActionType.RECORDING;
+    | ActionType.RECORDING
+    | ActionType.EXTENTIONS;
+
   linkText?: 'user' | 'account' | 'customers' | 'trunks';
   linkTo?: Routes;
   take: number;

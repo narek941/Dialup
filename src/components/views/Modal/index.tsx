@@ -64,7 +64,7 @@ const Modal = ({
 
   const renderPlatform = (platform: any) => {
     switch (platform) {
-      case AccountTabType.BINANCE_FUTURES_USDTM:
+      case AccountTabType.CAMPAIGN:
         return (
           <>
             <BinanceFutureIcon className={styles.item__header__text__subtitle__platform__icon} />
@@ -72,14 +72,14 @@ const Modal = ({
           </>
         );
 
-      case AccountTabType.BINANCE:
+      case AccountTabType.NOTIFICATION:
         return (
           <>
             <BinanceSpotIcon className={styles.item__header__text__subtitle__platform__icon} />
             <span>Binance Spot</span>
           </>
         );
-      case AccountTabType.BINANCE_FUTURES_COINM:
+      case AccountTabType.RATE:
         return (
           <>
             <BinanceFutureCoinIcon
