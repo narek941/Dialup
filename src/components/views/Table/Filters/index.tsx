@@ -75,8 +75,8 @@ export const Filters = ({ filterField }: FiltersProps) => {
             </div>
           );
         case 'Range': {
-          const min = filterValue[`min${field.name}` as any] || 0;
-          const max = filterValue[`max${field.name}` as any] || 100;
+          const min = 1 || filterValue[`min${field.name}` as any];
+          const max = 1 || filterValue[`max${field.name}` as any];
           return (
             <div key={field.name} className={styles.item}>
               <Controller

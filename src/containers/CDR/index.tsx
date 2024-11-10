@@ -20,9 +20,6 @@ const Cdr = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const { take, order, sort } = usersFilter;
-  /* eslint-disable no-console */
-
-  const handleDelete = (id: number) => console.log('Delete ' + id);
 
   useEffect(() => {
     const getUsers = async () => {
