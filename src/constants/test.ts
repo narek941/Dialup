@@ -6,36 +6,42 @@ export const testCustomersList = [
     name: 'ipeim',
     lastname: 'ipeim',
     email: 'ipeim@ipeim.com',
+    status: 'active',
   },
   {
     id: '3',
     name: 'supcom',
     lastname: 'supcom',
     email: 'supcom@supcom.com',
+    status: 'active',
   },
   {
     id: '4',
     name: 'lsasg',
     lastname: 'lsasg',
     email: 'lsasg@lsasg.com',
+    status: 'active',
   },
   {
     id: '7',
     name: 'amosbah',
     lastname: 'amosbah',
     email: 'amosbah@amosbah.com',
+    status: 'active',
   },
   {
     id: '8',
     name: 'sip',
     lastname: 'sip',
     email: 'sip@sip.com',
+    status: 'expired',
   },
   {
     id: '9',
     name: 'Eduard',
     lastname: 'Hakobyan',
-    email: 'eduard@example.com	',
+    email: 'eduard@example.com',
+    status: 'active',
   },
 ] as unknown as RowsType[];
 
@@ -261,5 +267,50 @@ export const testMeetingList = [
     description: '16-01-2024 test',
     pin: '1234567',
     participants: null,
+  },
+] as unknown as RowsType[];
+
+export const testUsersList = [
+  {
+    id: '2',
+    name: 'Eduard',
+    lastname: 'Hakobyan',
+    email: 'ipeim@ipeim.com',
+    role: 'admin',
+  },
+  {
+    id: '3',
+    name: 'John',
+    lastname: 'Smith',
+    email: 'supcom@supcom.com',
+    role: 'operator',
+  },
+  {
+    id: '4',
+    name: 'Joe',
+    lastname: 'Doe',
+    email: 'lsasg@lsasg.com',
+    role: 'client',
+  },
+  {
+    id: '7',
+    name: 'amosbah',
+    lastname: 'amosbah',
+    email: 'amosbah@amosbah.com',
+    role: 'operator',
+  },
+  {
+    id: '8',
+    name: 'sip',
+    lastname: 'sip',
+    email: 'sip@sip.com',
+    role: 'client',
+  },
+  {
+    id: '9',
+    name: 'Eduard',
+    lastname: 'Hakobyan',
+    email: 'eduard@example.com',
+    role: 'client',
   },
 ] as unknown as RowsType[];

@@ -8,11 +8,11 @@ import { adminActions, adminSelectors } from 'store/adminSlice';
 import { RoleType } from 'types/api';
 import { authSelectors } from 'store/authSlice';
 import { ActionType } from 'components/views/Table/TableToolbar/types';
-import customersTable from 'constants/tables/customers';
-import { testCustomersList } from 'constants/test';
+import { testUsersList } from 'constants/test';
 import { filterFormFields } from './fields';
+import usersTable from 'constants/tables/users';
 
-const Customers = () => {
+const Users = () => {
   const dispatch = useAppDispatch();
 
   const { list, usersFilter, totalCount } = useSelector(adminSelectors.selectAdmin);
@@ -51,18 +51,17 @@ const Customers = () => {
       type='secondary'
       filterField={filterFormFields}
       handleSort={() => {}}
-      tableName='customers'
-      showEditAction
-      headCells={customersTable}
+      tableName='users'
+      headCells={usersTable}
       handleChangePage={() => {}}
-      action={ActionType.CUSTOMERS}
-      linkTo={Routes.AddNewCustomers}
-      rows={testCustomersList || list}
+      action={ActionType.USERS}
+      linkTo={Routes.AddNewUser}
+      rows={testUsersList || list}
       handleChangeRowsPerPage={() => {}}
-      dataCells={['id', 'name', 'lastname', 'email', 'status']}
-      totalCount={totalCount || testCustomersList.length}
+      dataCells={['id', 'name', 'lastname', 'email', 'role']}
+      totalCount={totalCount || testUsersList.length}
     />
   );
 };
 
-export default Customers;
+export default Users;

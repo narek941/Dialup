@@ -17,6 +17,7 @@ export enum Routes {
   Customers = '/customers',
 
   Trunks = '/trunks',
+  Users = '/users',
   Numbers = '/numbers',
   Routing = '/routing',
   Recording = '/recording',
@@ -29,6 +30,8 @@ export enum Routes {
   EditUser = '/users/edit',
 
   AddNewCustomers = '/customers/create',
+  AddNewUsers = '/users/create',
+
   AddNewTrunk = '/trunks/create',
   AddNewRecording = '/recording/create',
 
@@ -40,6 +43,8 @@ export enum Routes {
 
   AddNewAccount = '/accounts/create',
   EditAccount = '/accounts/edit',
+
+  ViewCustomers = '/customers/:id',
 }
 
 export type ParamsWithId = {

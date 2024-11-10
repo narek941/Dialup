@@ -37,6 +37,7 @@ const Table = ({
     return (
       <TableBody
         rows={rows}
+        action={action}
         tableName={tableName}
         handleDelete={handleDelete}
         dataCells={dataCells}

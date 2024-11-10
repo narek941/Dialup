@@ -81,6 +81,8 @@
   "cdr_header": "CDR",
   "meetings_header": "Meetings",
   "sms_header": "SMS",
-  "api_header": "Api"
+  "api_header": "Api",
+  "customer_details_header": "Customer detail"
+
 }
 

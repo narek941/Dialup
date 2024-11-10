@@ -1,5 +1,5 @@
 import { HeadCell } from 'types';
-const customersTable: HeadCell[] = [
+const usersTable: HeadCell[] = [
   {
     id: 'id',
     value: 'id',
@@ -25,15 +25,10 @@ const customersTable: HeadCell[] = [
   },
 
   {
-    id: 'status',
-    label: 'Status',
-    value: 'status',
-  },
-
-  {
-    id: 'actions',
-    label: 'Actions',
+    id: 'role',
+    label: 'Role',
+    value: 'role',
   },
 ];
 
-export default customersTable;
+export default usersTable;

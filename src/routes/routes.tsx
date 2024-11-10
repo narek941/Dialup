@@ -16,6 +16,8 @@ import {
 } from '../containers';
 import { RoutesProps, Routes } from '../types';
 import Home from 'containers/Home';
+import CustomersDetail from 'containers/Customers/CustomersDetail';
+import Users from 'containers/Users';
 
 const routes: RoutesProps[] = [
   {
@@ -133,6 +135,26 @@ const routes: RoutesProps[] = [
     text: 'api_header',
     isProtected: true,
     component: <Api />,
+  },
+  {
+    path: Routes.ViewCustomers,
+    text: 'customer_details_header',
+    isProtected: true,
+    component: <CustomersDetail />,
+    isBackBtn: true,
+  },
+  {
+    path: Routes.Users,
+    text: 'user_header',
+    isProtected: true,
+    component: <Users />,
+  },
+  {
+    path: Routes.AddNewUsers,
+    text: 'customer_details_header',
+    isProtected: true,
+    component: <Users />,
+    // isBackBtn: true,
   },
 ];
 
