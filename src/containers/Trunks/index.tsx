@@ -1,30 +1,22 @@
-import { alertsTable } from 'constants/index';
+import { trunksTable } from 'constants/index';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Loader, Table } from 'components';
-import { useAppDispatch } from 'hooks';
-import { alertsActions, alertsSelectors } from 'store/alertsSlice';
+import { alertsSelectors } from 'store/alertsSlice';
 import { ActionType } from 'components/views/Table/TableToolbar/types';
+import { testTrunksList } from 'constants/test';
+import { Routes } from 'types/routes';
+import { filterFormFields } from './fields';
 
 const Trunks = () => {
-  const dispatch = useAppDispatch();
   const { list, totalCount, filter } = useSelector(alertsSelectors.selectAlerts);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading] = useState(false);
 
   const { take, order, sort } = filter;
 
-  useEffect(() => {
-    const getAlerts = async () => {
-      try {
-        await dispatch(alertsActions.getAlertList(filter)).unwrap();
-        setIsLoading(false);
-      } catch {
-        setIsLoading(false);
-      }
-    };
-    getAlerts();
-  }, [dispatch, filter, filter.filter]);
+  /* eslint-disable no-console */
+  const handleDelete = (id: number) => console.log(id);
 
   if (isLoading) {
     return <Loader />;
@@ -33,13 +25,23 @@ const Trunks = () => {
   return (
     <Table
       take={take}
-      rows={list}
+      rows={testTrunksList || list}
       sort={sort}
       order={order}
       type='primary'
-      action={ActionType.ALERTS}
-      totalCount={totalCount}
-      headCells={alertsTable.mainTable}
+      action={ActionType.TRUNKS}
+      totalCount={testTrunksList.length || totalCount}
+      headCells={trunksTable}
+      linkTo={Routes.AddNewTrunk}
+      page={0}
+      handleSort={() => {}}
+      tableName='trunks'
+      showEditAction
+      handleDelete={handleDelete}
+      filterField={filterFormFields}
+      handleChangePage={() => {}}
+      handleChangeRowsPerPage={() => {}}
+      dataCells={['identifier', 'name', 'id', 'domain']}
     />
   );
 };

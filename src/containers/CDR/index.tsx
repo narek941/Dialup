@@ -1,5 +1,3 @@
-import { customersTable } from 'constants/index';
-
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
@@ -9,10 +7,13 @@ import { useAppDispatch } from 'hooks';
 import { adminActions, adminSelectors } from 'store/adminSlice';
 import { RoleType } from 'types/api';
 import { authSelectors } from 'store/authSlice';
-import { ActionType } from 'components/views/Table/TableToolbar/types';
+import { filterFormFields } from 'containers/Trunks/fields';
+import cdrTable from 'constants/tables/cdr';
+import { testCDRList } from 'constants/test';
 
 const Cdr = () => {
   const dispatch = useAppDispatch();
+
   const { list, usersFilter, totalCount } = useSelector(adminSelectors.selectAdmin);
   const role = useSelector(authSelectors.selectRole);
 
@@ -33,7 +34,7 @@ const Cdr = () => {
   }, [dispatch, usersFilter]);
 
   if (role && role !== RoleType.ADMIN) {
-    return <Navigate to={Routes.Dashboard} replace />;
+    return <Navigate to={Routes.Home} replace />;
   }
 
   if (isLoading) {
@@ -42,16 +43,31 @@ const Cdr = () => {
 
   return (
     <Table
+      page={0}
       take={take}
-      rows={list}
       sort={sort}
       order={order}
-      action={ActionType.USERS}
-      linkText='user'
       type='secondary'
-      headCells={customersTable}
-      totalCount={totalCount}
-      linkTo={Routes.AddNewUser}
+      filterField={filterFormFields}
+      handleSort={() => {}}
+      tableName='CDR'
+      headCells={cdrTable}
+      handleChangePage={() => {}}
+      rows={testCDRList || list}
+      handleChangeRowsPerPage={() => {}}
+      dataCells={[
+        'id',
+        'date',
+        'from',
+        'to',
+        'duration',
+        'inChannel',
+        'outChannel',
+        'lastStep',
+        'recording',
+        'voiceMail',
+      ]}
+      totalCount={totalCount || testCDRList.length}
     />
   );
 };

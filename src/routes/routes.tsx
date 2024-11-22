@@ -1,21 +1,23 @@
 import Trunks from 'containers/Trunks';
-import Recording from 'containers/Numbers';
 
 import {
   Error,
   SignIn,
-  AddNewAccount,
   Customers,
   Extensions,
   Numbers,
   Routing,
   CDR,
   Meetings,
+  Recording,
   Sms,
   Api,
   AddNewCustomers,
 } from '../containers';
 import { RoutesProps, Routes } from '../types';
+import Home from 'containers/Home';
+import CustomersDetail from 'containers/Customers/CustomersDetail';
+import Users from 'containers/Users';
 
 const routes: RoutesProps[] = [
   {
@@ -51,14 +53,20 @@ const routes: RoutesProps[] = [
     path: Routes.AddNewAccount,
     text: 'accounts_settings_header',
     isProtected: true,
-    component: <AddNewAccount />,
+    component: <AddNewCustomers />,
     isBackBtn: true,
+  },
+  {
+    path: Routes.Home,
+    text: '',
+    isProtected: true,
+    component: <Home />,
   },
   {
     path: `${Routes.EditAccount}/:id`,
     text: 'accounts_settings_header',
     isProtected: true,
-    component: <AddNewAccount />,
+    component: <AddNewCustomers />,
     isBackBtn: true,
   },
   {
@@ -127,6 +135,26 @@ const routes: RoutesProps[] = [
     text: 'api_header',
     isProtected: true,
     component: <Api />,
+  },
+  {
+    path: Routes.ViewCustomers,
+    text: 'customer_details_header',
+    isProtected: true,
+    component: <CustomersDetail />,
+    isBackBtn: true,
+  },
+  {
+    path: Routes.Users,
+    text: 'user_header',
+    isProtected: true,
+    component: <Users />,
+  },
+  {
+    path: Routes.AddNewUsers,
+    text: 'customer_details_header',
+    isProtected: true,
+    component: <Users />,
+    // isBackBtn: true,
   },
 ];
 

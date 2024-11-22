@@ -9,49 +9,12 @@ import { RoleType } from 'types/api';
 import { authSelectors } from 'store/authSlice';
 import { ActionType } from 'components/views/Table/TableToolbar/types';
 import customersTable from 'constants/tables/customers';
-import { RowsType } from 'components/views/Table/types';
+import { testCustomersList } from 'constants/test';
+import { filterFormFields } from './fields';
 
 const Customers = () => {
   const dispatch = useAppDispatch();
 
-  const testList = [
-    {
-      id: '2',
-      name: 'ipeim',
-      lastname: 'ipeim',
-      email: 'ipeim@ipeim.com',
-    },
-    {
-      id: '3',
-      name: 'supcom',
-      lastname: 'supcom',
-      email: 'supcom@supcom.com',
-    },
-    {
-      id: '4',
-      name: 'lsasg',
-      lastname: 'lsasg',
-      email: 'lsasg@lsasg.com',
-    },
-    {
-      id: '7',
-      name: 'amosbah',
-      lastname: 'amosbah',
-      email: 'amosbah@amosbah.com',
-    },
-    {
-      id: '8',
-      name: 'sip',
-      lastname: 'sip',
-      email: 'sip@sip.com',
-    },
-    {
-      id: '9',
-      name: 'Eduard',
-      lastname: 'Hakobyan',
-      email: 'eduard@example.com	',
-    },
-  ] as RowsType[];
   const { list, usersFilter, totalCount } = useSelector(adminSelectors.selectAdmin);
   const role = useSelector(authSelectors.selectRole);
 
@@ -72,7 +35,7 @@ const Customers = () => {
   }, [dispatch, usersFilter]);
 
   if (role && role !== RoleType.ADMIN) {
-    return <Navigate to={Routes.Dashboard} replace />;
+    return <Navigate to={Routes.Home} replace />;
   }
 
   if (isLoading) {
@@ -81,16 +44,23 @@ const Customers = () => {
 
   return (
     <Table
+      page={0}
       take={take}
-      rows={testList}
       sort={sort}
       order={order}
-      action={ActionType.CUSTOMERS}
-      linkText='customers'
       type='secondary'
+      filterField={filterFormFields}
+      handleSort={() => {}}
+      tableName='customers'
+      showEditAction
       headCells={customersTable}
-      totalCount={totalCount || testList.length}
+      handleChangePage={() => {}}
+      action={ActionType.CUSTOMERS}
       linkTo={Routes.AddNewCustomers}
+      rows={testCustomersList || list}
+      handleChangeRowsPerPage={() => {}}
+      dataCells={['id', 'name', 'lastname', 'email', 'status']}
+      totalCount={totalCount || testCustomersList.length}
     />
   );
 };

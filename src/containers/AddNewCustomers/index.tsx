@@ -9,12 +9,12 @@ import { AddUserForm } from 'components';
 import { AppDispatch, Routes } from 'types';
 import { usersActions } from 'store/usersSlice';
 import { adminActions, adminSelectors } from 'store/adminSlice';
-import { AddUserFormShape } from 'components/views/AddUserForm/types';
 import { accountsActions } from 'store/accountsSlice';
 import { RoleType } from 'types/api';
 import { authSelectors } from 'store/authSlice';
 
 import styles from './AddNewCustomers.module.scss';
+import { AddNewCustomersFormShape } from 'components/views/AddUserForm/types';
 
 const AddNewCustomers = () => {
   const navigate = useNavigate();
@@ -31,9 +31,9 @@ const AddNewCustomers = () => {
       email: values.email.trim(),
       password: values.password,
       name: values.name.trim(),
-      role: values.usersAccountType,
+      role: values.routType,
       deviceToken: uuidv4(),
-      allowedAccountIds: values.usersAccountList || [],
+      allowedAccountIds: values.twilioRoute || [],
     } as any;
 
     if (!id) {
@@ -51,11 +51,9 @@ const AddNewCustomers = () => {
           dispatch(adminActions.updateUserEmail({ userID: id, email: values.email })).unwrap(),
         );
       }
-      if (!isEqual(values.usersAccountType, role)) {
+      if (!isEqual(values.routType, role)) {
         userUpdatedFieldsPromises.push(
-          dispatch(
-            adminActions.updateUserRole({ userID: id, role: values.usersAccountType }),
-          ).unwrap(),
+          dispatch(adminActions.updateUserRole({ userID: id, role: values.routType })).unwrap(),
         );
       }
       if (values.password && !isEqual(values.password, password)) {
@@ -65,12 +63,12 @@ const AddNewCustomers = () => {
           ).unwrap(),
         );
       }
-      if (values.usersAccountList && !isEqual(values.usersAccountList, allowedAccountIds)) {
+      if (values.routType && !isEqual(values.routType, allowedAccountIds)) {
         userUpdatedFieldsPromises.push(
           dispatch(
             adminActions.updateUserAllowedAccounts({
               userID: id,
-              allowedAccountIds: values.usersAccountList,
+              allowedAccountIds: values.routType as any,
             }),
           ).unwrap(),
         );
@@ -94,7 +92,7 @@ const AddNewCustomers = () => {
   }, []);
 
   if (authRole && authRole !== RoleType.ADMIN) {
-    return <Navigate to={Routes.Dashboard} replace />;
+    return <Navigate to={Routes.Home} replace />;
   }
 
   return (

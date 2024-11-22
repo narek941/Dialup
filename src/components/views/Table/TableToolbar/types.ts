@@ -1,16 +1,19 @@
 import { Routes } from 'types';
+import { FormField } from '../Filters/types';
 
 export interface ITableToolbarProps {
-  linkText?: 'user' | 'account' | 'customers';
+  linkText?: string;
   linkTo?: Routes;
   onClick?: any;
-  action: ActionType.ACCOUNTS | ActionType.ALERTS | ActionType.USERS | ActionType.CUSTOMERS;
+  filterField: FormField[];
+  action: any;
 }
 
 export enum AccountTabType {
-  BINANCE = 'BINANCE',
-  BINANCE_FUTURES_USDTM = 'BINANCE_FUTURES_USDTM',
-  BINANCE_FUTURES_COINM = 'BINANCE_FUTURES_COINM',
+  NOTIFICATION = 'NOTIFICATION',
+  RATE = 'RATE',
+  CONTACT = 'CONTACT',
+  CAMPAIGN = 'CAMPAIGN',
 }
 
 export enum FutureTabType {
@@ -25,9 +28,14 @@ export enum FutureType {
 
 export enum ActionType {
   USERS = 'users',
+  MEETINGS = 'meetings',
   ACCOUNTS = 'accounts',
-  ALERTS = 'alerts',
+  EXTENTIONS = 'extentions',
   CUSTOMERS = 'customers',
+  TRUNKS = 'trunks',
+  NUMBERS = 'numbers',
+  ROUTINGS = 'routings',
+  RECORDING = 'recording',
 }
 
 export enum OrderType {

@@ -1,36 +1,30 @@
-import accountsTab from 'constants/tabs/accounts';
-
 import classNames from 'classnames';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Tooltip } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { AddAccountIcon, FilterIcon } from 'assets/icons';
 import { AccessWrapper, Alert, LinkButton, Tab } from 'components';
-import AccountsFilters from 'components/views/filters/AccountsFilters';
-import AlertsFilters from 'components/views/filters/AlertsFilters';
-import { accountsActions } from 'store/accountsSlice';
 import { useAppDispatch } from 'hooks';
 import { adminActions } from 'store/adminSlice';
 
 import styles from './TableToolbar.module.scss';
 import { AccountTabType, ActionType, ITableToolbarProps } from './types';
-import CustomersFilters from 'components/views/filters/CustomersFilters';
+import { Filters } from '../Filters';
+import { SmsTab } from 'constants/tabs';
 
-const TableToolbar = ({ linkText, linkTo, action }: ITableToolbarProps): JSX.Element => {
+const TableToolbar = ({
+  linkText,
+  linkTo,
+  action,
+  filterField,
+}: ITableToolbarProps): JSX.Element => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
   const [filterVisible, setFilterVisible] = useState(false);
   const text = `+ ADD NEW ${linkText}`;
-  const toolbarClasses = classNames(styles.toolbar, {
-    [styles.toolbar_noLink]: !linkTo,
-  });
-
-  const wrapperClasses = classNames(styles.wrapper, {
-    [styles.wrapper__account]: action === ActionType.ACCOUNTS,
-  });
 
   const handleFilter = () => setFilterVisible(!filterVisible);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -52,31 +46,16 @@ const TableToolbar = ({ linkText, linkTo, action }: ITableToolbarProps): JSX.Ele
     setSearchParams({ tab: id });
   };
 
-  useEffect(() => {
-    setFilterVisible(false);
-    const platformId =
-      accountsTab?.find((item: any) => searchParams?.get('tab') == item?.id)?.platformId || 1;
-    dispatch(accountsActions.platformUpdate({ platform: platformId }));
-  }, [searchParams.get('tab')]);
-
-  const renderFilter = () => {
-    if (action === ActionType.ACCOUNTS) {
-      return <AccountsFilters />;
-    } else if (action === ActionType.CUSTOMERS) {
-      return <CustomersFilters />;
-    } else {
-      return <AlertsFilters />;
-    }
-  };
+  const renderFilter = () => <Filters filterField={filterField} />;
 
   const renderTab = () => {
     if (action === ActionType.ACCOUNTS) {
       return (
         <div className={styles.tabs__wrapper}>
           <div className={styles.tabs}>
-            {accountsTab.map(({ id, name, Icon }) => (
+            {SmsTab.map(({ id, name, Icon }: any) => (
               <Tab
-                selectedTab={searchParams.get('tab') || AccountTabType.BINANCE}
+                selectedTab={searchParams.get('tab') || AccountTabType.CAMPAIGN}
                 handleChange={handleTabUpdateChange}
                 id={id}
                 name={name}
@@ -103,8 +82,16 @@ const TableToolbar = ({ linkText, linkTo, action }: ITableToolbarProps): JSX.Ele
   };
 
   return (
-    <div className={wrapperClasses}>
-      <div className={toolbarClasses}>
+    <div
+      className={classNames(styles.wrapper, {
+        [styles.wrapper__account]: action === ActionType.ACCOUNTS,
+      })}
+    >
+      <div
+        className={classNames(styles.toolbar, {
+          [styles.toolbar_noLink]: !linkTo,
+        })}
+      >
         {renderTab()}
         <div className={styles.toolbar__filter}>
           {linkTo && action === ActionType.ACCOUNTS && (

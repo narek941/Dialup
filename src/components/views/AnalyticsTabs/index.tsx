@@ -1,4 +1,4 @@
-import { accountAnalyticsTabs } from 'constants/index';
+import { SmsTab } from 'constants/index';
 
 import { useEffect, useState } from 'react';
 import { Paper, TableContainer, Tooltip } from '@mui/material';
@@ -7,15 +7,7 @@ import { useTranslation } from 'react-i18next';
 import usePortal from 'react-useportal';
 import classNames from 'classnames';
 import { isNull } from 'lodash';
-import {
-  Tab,
-  TradesTable,
-  InflowsTable,
-  WalletsTable,
-  OrdersHistoryTable,
-  AnalyticsAlertTable,
-  Alert,
-} from 'components';
+import { Tab, Alert } from 'components';
 import { AddInflowIcon, FilterIcon } from 'assets/icons';
 import { accountsActions, accountsSelectors } from 'store/accountsSlice';
 import { useAppDispatch, useAppSelector } from 'hooks';
@@ -108,18 +100,18 @@ const AnalyticsTabs = (): JSX.Element => {
 
   const renderTable = () => {
     switch (searchParams.get('tab')) {
-      case TabType.campaigns:
-        return <WalletsTable filterVisible={openFilter} />;
-      case TabType.contacts:
-        return <InflowsTable filterVisible={openFilter} handleAddInflow={handleAddInflow} />;
-      case TabType.notifications:
-        return <OrdersHistoryTable filterVisible={openFilter} />;
-      case TabType.rates:
-        return <TradesTable filterVisible={openFilter} />;
-      case TabType.settings:
-        return <AnalyticsAlertTable filterVisible={openFilter} />;
+      // case TabType.campaigns:
+      //   return <WalletsTable filterVisible={openFilter} />;
+      // case TabType.contacts:
+      //   return <InflowsTable filterVisible={openFilter} handleAddInflow={handleAddInflow} />;
+      // case TabType.notifications:
+      //   return <OrdersHistoryTable filterVisible={openFilter} />;
+      // case TabType.rates:
+      //   return <TradesTable filterVisible={openFilter} />;
+      // case TabType.settings:
+      //   return <AnalyticsAlertTable filterVisible={openFilter} />;
       default:
-        return <AnalyticsAlertTable filterVisible={openFilter} />;
+        return null;
     }
   };
 
@@ -128,7 +120,7 @@ const AnalyticsTabs = (): JSX.Element => {
       <TableContainer component={Paper} className={styles.table}>
         <div className={styles.tabs__wrapper}>
           <div className={styles.tabs}>
-            {accountAnalyticsTabs.map(({ id, name }) => (
+            {SmsTab.map(({ id, name }) => (
               <Tab
                 selectedTab={searchParams.get('campaigns') || TabType.campaigns}
                 handleChange={handleTabUpdateChange}

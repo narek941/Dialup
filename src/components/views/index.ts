@@ -9,13 +9,5 @@ export { default as TradeChart } from './TradeChart';
 export { default as Pagination } from './Pagination';
 export { default as SignInForm } from './SignInForm';
 export { default as AddUserForm } from './AddUserForm';
-export { default as AnalyticsTabs } from './AnalyticsTabs';
 export { default as AddAccountForm } from './AddAccountForm';
-
-// Tables
-export { default as TradesTable } from './tables/TradesTable';
-export { default as OrdersTable } from './tables/OrdersTable';
-export { default as InflowsTable } from './tables/InflowsTable';
-export { default as WalletsTable } from './tables/WalletsTable';
-export { default as OrdersHistoryTable } from './tables/OrdersHistoryTable';
-export { default as AnalyticsAlertTable } from './tables/AnalyticsAlertTable';
+export { default as AnalyticsTabs } from './AnalyticsTabs';

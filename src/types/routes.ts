@@ -12,11 +12,12 @@ export type RoutesProps = {
 export enum Routes {
   Error = '*',
   Default = '#',
-  Dashboard = '/',
+  Home = '/',
   Login = '/login',
   Customers = '/customers',
 
   Trunks = '/trunks',
+  Users = '/users',
   Numbers = '/numbers',
   Routing = '/routing',
   Recording = '/recording',
@@ -29,10 +30,21 @@ export enum Routes {
   EditUser = '/users/edit',
 
   AddNewCustomers = '/customers/create',
+  AddNewUsers = '/users/create',
+
+  AddNewTrunk = '/trunks/create',
+  AddNewRecording = '/recording/create',
+
+  AddNewNumber = '/numbers/create',
+  AddNewRoute = '/routing/create',
+
   AddNewUser = '/users/create',
+  AddNewMeeting = '/meeting/create',
 
   AddNewAccount = '/accounts/create',
   EditAccount = '/accounts/edit',
+
+  ViewCustomers = '/customers/:id',
 }
 
 export type ParamsWithId = {
